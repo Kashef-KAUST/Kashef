@@ -1,0 +1,1826 @@
+swe_system_message:
+    
+You are a Software Testing Engineer tasked with generating testing code for web applications. You have two collaborators, a Code Executor and an HTML interpreter. The Code Executor will simply run the code you develop and provide feedback including errors or exception that might occur when executing the code. The HTML interpreter will provide you with the details of the HTML page so you can properly interact with the web application. Make sure you only click on elements that you have seen in the details of HTML content provided by the HTML interpreter. Use the minimum amount of libraries possible in your code. The code you write should be self-contained and not require any input from the user.
+
+Your goal is to conduct thorough and effective testing by adhering to these guidelines:
+
+1. **Sequential Task Execution:** Handle tasks sequentially. After submitting code and receiving feedback, proceed to the next task.
+
+2. **Incremental Code Development:** Always start with code that access the website first and enhance your code iteratively based on feedback received, particularly utilizing the HTML content. Make sure to always print the HTML page in your code in order to identify the next step to take and whether or not the task is done. At no point should you change or remove any previously written code that did not result in an error.
+
+3. **Dynamic Selector Adjustment:** If encountering a `NoSuchElementException`, adjust your element selectors based on the most recent HTML content.
+
+4. **Accurate Element Identifier Usage:** Use identifiers from the HTML content to ensure your Selenium functions interact with the correct webpage elements.
+
+5. **Selenium Library Version 4 Compliance:** Develop your testing code using Selenium version 4 to ensure compatibility.
+
+6. **Proactive Error Handling and Code Modification:** Modify your code as necessary based on execution errors or updated HTML feedback. Only change or remove code that has directly led to errors; otherwise, build upon existing code.
+
+7. **Version Tracking:** Maintain versions sequentially, ensuring that each new version of the script includes the functionalities of all previous versions, along with the new features being added.
+
+### Development Workflow:
+
+- **Objective:** Incrementally develop a Python script to perform tasks on a web page, progressing from basic functionalities to complex interactions.
+
+- **Iterative Development:** Build upon each step with the latest feedback, ensuring each task is fully executed according to the prompt instructions.
+
+### Example Workflow:
+
+#### **Python Code Version 1: Access and Print HTML Content**
+
+#### **Python Code Version 2: Interact with a Page Element**
+
+#### **Python Code Version 3: Fix NoSuchElementException**
+
+#### **Python Code Version 4: Perform an Additional Action**
+
+
+    html_system_message:
+
+Your task is to interpret the HTML code provided to you and return detailed, low-level information on the different elements found on the page. Provide information on the following:
+
+1. Clickable Elements: Identify all interactive elements such as buttons, links, and any other interactive elements. Include their HTML tags and attributes (e.g., IDs, classes, names).
+
+2. Forms and input boxes: List all forms and input boxes on the page, including the input fields and submission buttons. Provide details on form attributes (e.g., IDs, classes, names).
+
+3. Textual Content: Provide a brief overview of any significant textual content that could be relevant for interacting with the page, such as headings and labels.
+
+Do not generate code or attempt to solve any errors that may appear in the HTML code. Do not provide summaries or additional information beyond what is requested. You are not expected to execute script elements within the HTML. Your focus should be on interpreting the HTML and providing the requested information in a concise, accurate manner.
+
+
+    prompt:
+I have a to-do website at the address https://www.projoodle.com. Open the website and create a to-do by clicking on 'create projoodle'. When having to input information, jut provide random information.
+
+
+    Starting chat logging:
+
+Admin (to chat_manager):
+
+
+I have a to-do website at the address https://www.projoodle.com. Open the website and create a to-do by clicking on 'create projoodle'. When having to input information, jut provide random information.
+
+
+--------------------------------------------------------------------------------
+SWE (to chat_manager):
+
+To start with the task, I'll write the initial version of the Python script to access the website and print its HTML content. This script will use Selenium, a web automation tool, to interact with web browsers. Since we're focusing on minimal library usage, Selenium will be the primary tool for this task.
+
+### Python Code Version 1: Access and Print HTML Content
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
+# Initialize the Chrome driver
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
+# Open the website
+driver.get("https://www.projoodle.com")
+
+# Print the HTML content of the page
+print(driver.page_source)
+
+# Close the browser
+driver.quit()
+```
+
+This code initializes a Chrome browser session, navigates to the specified website, prints the HTML content of the page, and then closes the browser. It uses `webdriver_manager` to automatically manage the ChromeDriver needed by Selenium, ensuring compatibility with the browser version.
+
+Please execute this code to verify it successfully accesses the website and prints the HTML content.
+
+--------------------------------------------------------------------------------
+Provide feedback to chat_manager. Press enter to skip and use auto-reply, or type 'exit' to end the conversation: 
+>>>>>>>> NO HUMAN INPUT RECEIVED.
+
+>>>>>>>> USING AUTO REPLY...
+
+>>>>>>>> EXECUTING CODE BLOCK 0 (inferred language is python)...
+Executor (to chat_manager):
+
+exitcode: 0 (execution succeeded)
+Code output: 
+<html lang="en" class="sr macos desktop landscape"><head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+<title>To do list, Kanban board, create project, free project management tool</title>
+<meta name="description" content="Create a To do List for free and share it with others. Including Kanban Board, without registration - the free project management tool">
+<meta name="robots" content="index,follow">
+<link rel="alternate" href="https://www.projoodle.com" hreflang="x-default">
+<link rel="alternate" href="https://www.projoodle.com/de" hreflang="de">
+<link rel="alternate" href="https://www.projoodle.com/en" hreflang="en">
+<link rel="alternate" href="https://www.projoodle.com/fr" hreflang="fr">
+<link rel="alternate" href="https://www.projoodle.com/it" hreflang="it">
+<link rel="alternate" href="https://www.projoodle.com/es" hreflang="es">
+<link rel="alternate" href="https://www.projoodle.com/el" hreflang="el">
+<link rel="alternate" href="https://www.projoodle.com/nl" hreflang="nl">
+<link rel="alternate" href="https://www.projoodle.com/ru" hreflang="ru">
+<link rel="canonical" href="https://www.projoodle.com">
+<meta name="google-signin-client_id" content="119661754506-gqv6a30cvodkjrat9qu7uanjmdnkv6hl.apps.googleusercontent.com.apps.googleusercontent.com">
+<link rel="shortcut icon" href="/public/image/favicons/favicon.ico">
+<link rel="icon" type="image/png" href="/public/image/favicons/favicon2x.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/public/image/favicons/favicon.png" sizes="16x16">
+<link rel="apple-touch-icon" href="/public/image/favicons/apple-touch-icon-180x180-precomposed.png" sizes="180x180">
+<link rel="apple-touch-icon" href="/public/image/favicons/apple-touch-icon-152x152-precomposed.png" sizes="152x152">
+<link rel="apple-touch-icon" href="/public/image/favicons/apple-touch-icon-144x144-precomposed.png" sizes="144x144">
+<link rel="apple-touch-icon" href="/public/image/favicons/apple-touch-icon-120x120-precomposed.png" sizes="120x120">
+<link rel="apple-touch-icon" href="/public/image/favicons/apple-touch-icon-114x114-precomposed.png" sizes="114x114">
+<link rel="apple-touch-icon" href="/public/image/favicons/apple-touch-icon-76x76-precomposed.png" sizes="76x76">
+<link rel="apple-touch-icon" href="/public/image/favicons/apple-touch-icon-72x72-precomposed.png" sizes="72x72">
+<link rel="apple-touch-icon" href="/public/image/favicons/apple-touch-icon-60x60-precomposed.png" sizes="60x60">
+<link rel="apple-touch-icon" href="/public/image/favicons/apple-touch-icon-57x57-precomposed.png" sizes="57x57">
+<link rel="apple-touch-icon-precomposed" href="/public/image/favicons/apple-touch-icon-precomposed.png">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<link href="/landing/fonts/feather/style.css" rel="stylesheet">
+<link href="/public/plugins/toastr/toastr.min.css" rel="stylesheet">
+<link href="/landing/css/landing-style.min.css" rel="stylesheet">
+<link href="/landing/css/app.min.css" rel="stylesheet">
+<link href="/landing/css/night.min.css" rel="stylesheet" id="theme-sheet">
+<script async="" src="https://static.hotjar.com/c/hotjar-2992237.js?sv=6"></script><script async="" src="https://script.hotjar.com/modules.9c3b50ddbc74247d2ae3.js" charset="utf-8"></script></head>
+<body class="is-theme-night" style="height: 100%;">
+<div class="hero is-relative is-theme-primary has-waves-bottom" data-page-theme="night">
+<div class="navbar-placeholder" style="height: 64.3984px;"><nav class="navbar navbar-wrapper navbar-fade navbar-light is-transparent">
+<div class="container">
+<div class="navbar-brand">
+<a class="navbar-item" href="/home">
+<img class="light-logo" src="/landing/img/logo-dark.svg" alt="Logo">
+<img class="dark-logo switcher-logo" src="/landing/img/logo.svg" alt="Logo">
+</a>
+<div class="nav-container">
+<a class="navbar-item nav-icon d-none" href="/account" title="User account">
+<i class="icon-user"></i>
+</a>
+<div class="custom-burger" data-target="">
+<a id="" class="responsive-btn" href="javascript:void(0);">
+<span class="menu-toggle">
+<span class="icon-box-toggle">
+<span class="rotate">
+<i class="icon-line-top"></i>
+<i class="icon-line-center"></i>
+<i class="icon-line-bottom"></i>
+</span>
+</span>
+</span>
+</a>
+</div>
+</div>
+</div>
+<div class="navbar-menu">
+<div class="navbar-end">
+<a class="navbar-item text" href="/new">
+Create Projoodle
+</a>
+<div class="navbar-item has-dropdown is-hoverable is-hidden-mobile text">
+<a class="navbar-link" href="#">
+English
+</a>
+<div class="navbar-dropdown is-boxed is-medium">
+<a class="navbar-item is-menu text" href="/de/" title="German">
+<span>Deutsch</span>
+</a>
+<a class="navbar-item is-menu text" href="/fr/" title="French">
+<span>Français</span>
+</a>
+<a class="navbar-item is-menu text" href="/it/" title="Italian">
+<span>Italiano</span>
+</a>
+<a class="navbar-item is-menu text" href="/es/" title="Spanish">
+<span>Español</span>
+</a>
+<a class="navbar-item is-menu text" href="/el/" title="Greek">
+<span>Ελληνική</span>
+</a>
+<a class="navbar-item is-menu text" href="/nl/" title="Dutch">
+<span>Nederlands</span>
+</a>
+<a class="navbar-item is-menu text" href="/ru/" title="Russian">
+<span>Русский</span>
+</a>
+</div>
+</div>
+<div class="mobile-drop is-hidden-desktop">
+<div class="mobile-drop-trigger font text pointer">
+English <i class="material-icons"></i>
+</div>
+<div class="child-menu">
+<ul>
+<li>
+<a class="navbar-item is-menu text" href="/de/" title="German">
+<span>Deutsch</span>
+</a>
+<a class="navbar-item is-menu text" href="/fr/" title="French">
+<span>Français</span>
+</a>
+<a class="navbar-item is-menu text" href="/it/" title="Italian">
+<span>Italiano</span>
+</a>
+<a class="navbar-item is-menu text" href="/es/" title="Spanish">
+<span>Español</span>
+</a>
+<a class="navbar-item is-menu text" href="/el/" title="Greek">
+<span>Ελληνική</span>
+</a>
+<a class="navbar-item is-menu text" href="/nl/" title="Dutch">
+<span>Nederlands</span>
+</a>
+<a class="navbar-item is-menu text" href="/ru/" title="Russian">
+<span>Русский</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<a class="navbar-item nav-icon display" href="/account" title="User account">
+<i class="icon-user"></i>
+</a>
+</div>
+</div>
+</div>
+</nav></div>
+<!-- Hero image -->
+<div id="main-hero" class="hero-body">
+<div class="container">
+<div class="columns is-vcentered no-padding">
+<div class="column is-5 is-header-caption">
+<h1 class="title custom-title">Todo list and Kanban board. Free of charge. Without registration.</h1>
+<p class="subtitle is-5 light-text custom-text">
+With the todo list app Projoodle you can plan tasks, 
+share them with other people or create a Kanban board. 
+It's free and you don't need a login!
+</p>
+<p class="buttons">
+<a href="/new" class="
+button button-cta
+btn-align btn-outlined
+is-bold
+light-btn
+rounded
+z-index-2
+">
+Create Projoodle
+</a>
+</p>
+</div>
+<div class="column is-9 is-offset-1">
+<figure class="image is-3by2 hero-figure is-pushed">
+<img class="has-light-shadow" src="/landing/img/animation-startseite-de.gif" alt="Animation projoodle">
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature -->
+<div class="section">
+<div class="container">
+<div class="columns is-vcentered">
+<!-- With the help of responsive modifiers, the text column is duplicated to ensure better readability both on desktop and mobile viewports -->
+<div class="column is-5 is-offset-2 is-hidden-desktop is-hidden-tablet">
+<div class="title quick-feature is-handwritten text-bold">
+<h2 class="title-bold">To do list</h2>
+</div>
+<div class="title-divider is-small"></div>
+<span class="body-text">
+Create to do lists for weddings, parades, Halloween parties, nursery festivals, camps, 
+Travel and for many more events and share this to do list with your friends. 
+It's free and can be used without registration.</span>
+<p class="buttons button-margin">
+<a href="/en/to-do-list" class="button button-cta btn-align primary-btn rounded raised">
+To do list - here's how 
+</a>
+</p>
+</div>
+<div class="column is-6 is-offset-1 has-text-centered img-wizard">
+<img src="/landing/img/todo-list-wizard.png" alt="todo list">
+</div>
+<div class="column is-5 is-offset-2 is-hidden-mobile">
+<div class="title quick-feature is-handwritten text-bold">
+<h2 class="title-bold">To do list</h2>
+</div>
+<div class="title-divider is-small"></div>
+<span class="body-text">
+Create to do lists for weddings, parades, Halloween parties, nursery festivals, camps, 
+Travel and for many more events and share this to do list with your friends. 
+It's free and can be used without registration.</span>
+<p class="buttons button-margin">
+<a href="/en/to-do-list" class="button button-cta btn-align primary-btn rounded raised">
+To do list - here's how 
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature -->
+<div class="section section-feature-grey">
+<div class="container">
+<div class="columns is-vcentered">
+<div class="column is-5">
+<div class="title quick-feature is-handwritten text-bold">
+<h2 class="title-bold">Plan and share checklists online</h2>
+</div>
+<div class="title-divider is-small"></div>
+<span class="body-text">
+With Projoodle you can plan your projects, create checklists and share them with your friends. with your friends. 
+Together you can complete projects quickly and efficiently. 
+This makes collaboration fun and the project a success.</span>
+<p class="buttons button-margin">
+<a href="/en/checklist-share" class="button button-cta btn-align primary-btn rounded raised">
+Checklist - here's how 
+</a>
+</p>
+</div>
+<div class="column is-6 is-offset-1 has-text-centered img-vertical">
+<img src="/landing/img/checklist-and-share.png" alt="checklist">
+</div>
+</div>
+</div>
+</div>
+<!-- Feature -->
+<div class="section">
+<div class="container">
+<div class="columns is-vcentered">
+<!-- With the help of responsive modifiers, the text column is duplicated to ensure better readability both on desktop and mobile viewports -->
+<div class="column is-5 is-offset-2 is-hidden-desktop is-hidden-tablet">
+<div class="title quick-feature is-handwritten text-bold">
+<h2 class="title-bold">Kanban Board</h2>
+</div>
+<div class="title-divider is-small"></div>
+<span class="body-text">
+With one click you can switch from the list view to the Kanban Board. 
+Create as many columns in the Kanban Board as you want and move tasks 
+Simply drag &amp; drop tasks into the corresponding columns.</span>
+<p class="buttons button-margin">
+<a href="/en/kanban-board" class="button button-cta btn-align primary-btn rounded raised">
+Kanban - here's how 
+</a>
+</p>
+</div>
+<div class="column is-6 has-text-centered img-horizontal img-project">
+<img src="/landing/img/kanban.png" alt="kanban">
+</div>
+<div class="column is-5 is-offset-2 is-hidden-mobile">
+<div class="title quick-feature is-handwritten text-bold">
+<h2 class="title-bold">Kanban Board</h2>
+</div>
+<div class="title-divider is-small"></div>
+<span class="body-text">
+With one click you can switch from the list view to the Kanban Board. 
+Create as many columns in the Kanban Board as you want and move tasks 
+Simply drag &amp; drop tasks into the corresponding columns.</span>
+<p class="buttons button-margin">
+<a href="/en/kanban-board" class="button button-cta btn-align primary-btn rounded raised">
+Kanban - here's how 
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature -->
+<div class="section section-feature-grey">
+<div class="container">
+<div class="columns is-vcentered">
+<div class="column is-5">
+<div class="title quick-feature is-handwritten text-bold">
+<h2 class="title-bold">Project management</h2>
+</div>
+<div class="title-divider is-small"></div>
+<span class="body-text">
+The free project management tool "Projoodle" is suitable for small to medium-sized projects. to medium-sized projects. 
+You create project phases, invite team colleagues to the project, write comments on the tasks and send notifications by e-mail.</span>
+<p class="buttons button-margin">
+<a href="/en/project-management" class="button button-cta btn-align primary-btn rounded raised">
+Project management - here's how 
+</a>
+</p>
+</div>
+<div class="column is-6 is-offset-2 has-text-centered img-quadrat">
+<img src="/landing/img/projektmanagement.png" alt="project management">
+</div>
+</div>
+</div>
+</div>
+<!-- Feature -->
+<div class="section">
+<div class="container">
+<div class="columns is-vcentered">
+<!-- With the help of responsive modifiers, the text column is duplicated to ensure better readability both on desktop and mobile viewports -->
+<div class="column is-5 is-hidden-desktop is-hidden-tablet img-upload">
+<div class="title quick-feature is-handwritten text-bold">
+<h2 class="title-bold">Upload images and documents</h2>
+</div>
+<div class="title-divider is-small"></div>
+<span class="body-text">
+You want to add documents like pictures, screenshots or files to your tasks? 
+It's very easy. You can upload files directly from your smartphone or PC. 
+You have 25MB of memory available per task.</span>
+<p class="buttons button-margin">
+<a href="/en/file-upload" class="button button-cta btn-align primary-btn rounded raised">
+Upload - here's how
+</a>
+</p>
+</div>
+<div class="column is-6 has-text-centered img-quadrat">
+<img src="/landing/img/screenshots-uploads.png" alt="screenshots uploads">
+</div>
+<div class="column is-5 is-hidden-mobile img-upload">
+<div class="title quick-feature is-handwritten text-bold">
+<h2 class="title-bold">Upload images and documents</h2>
+</div>
+<div class="title-divider is-small"></div>
+<span class="body-text">
+You want to add documents like pictures, screenshots or files to your tasks? 
+It's very easy. You can upload files directly from your smartphone or PC. 
+You have 25MB of memory available per task.</span>
+<p class="buttons button-margin">
+<a href="/en/file-upload" class="button button-cta btn-align primary-btn rounded raised">
+Upload - here's how 
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature -->
+<div class="section section-feature-grey">
+<div class="container">
+<div class="columns is-vcentered">
+<div class="column is-5">
+<div class="title quick-feature is-handwritten text-bold">
+<h2 class="title-bold">Write comments</h2>
+</div>
+<div class="title-divider is-small"></div>
+<span class="body-text">
+Write as many comments per task as you like. 
+You share the comments with your friends by email. 
+Comments facilitate collaboration.</span>
+<p class="buttons button-margin">
+<a href="/en/comment-writing" class="button button-cta btn-align primary-btn rounded raised">
+Comments - here's how 
+</a>
+</p>
+</div>
+<div class="column is-6 is-offset-2 has-text-centered img-horizontal">
+<img src="/landing/img/comments.png" alt="comments">
+</div>
+</div>
+</div>
+</div>
+<div class="space-grey"></div>
+<div class="
+section
+is-medium is-relative
+has-waves-bottom-dark-grey
+section-feature-grey
+">
+</div>
+<footer id="dark-footer" class="footer footer-dark">
+<div class="container">
+<div class="columns">
+<div class="column footer-layout">
+<div class="footer-column footer-width">
+<div class="footer-header">
+<h3>Learning</h3>
+</div>
+<ul class="link-list">
+<li><a href="/en/to-do-list">Create a To Do List</a></li>
+<li><a href="/en/checklist-share">Plan and share tasks</a></li>
+<li><a href="/en/kanban-board">Create Kanban Board</a></li>
+<li><a href="/en/project-management">Project management</a></li>
+<li><a href="/en/file-upload">File Upload</a></li>
+<li><a href="/en/comment-writing">Write comments</a></li>
+</ul>
+</div>
+</div>
+<div class="column footer-layout">
+<div class="footer-column footer-width">
+<div class="footer-header">
+<h3>Links</h3>
+</div>
+<ul class="link-list">
+<li><a href="/en/imprint">Imprint</a></li>
+<li><a href="/en/privacy-policy">Privacy</a></li>
+<li><a href="/en/terms-of-use">Terms of use</a></li>
+</ul>
+</div>
+</div>
+<div class="column footer-layout">
+<div class="footer-column footer-width">
+<div>
+<img class="switcher-logo-w logo-footer" src="/landing/img/logo-dark.svg" alt="Logo">
+</div>
+<div class="text-footer-container">
+<span class="moto text-footer">
+Todo list and Kanban board. Free of charge. Without registration</span>
+</div>
+<ul class="link-list">
+<li><a href="https://www.paweco.ch">© 2020 - 2024 by PAWECO GmbH</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<div class="modal" id="projoModal" tabindex="-1" role="dialog" aria-labelledby="projoModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+</div>
+</div>
+</div>
+<script type="text/javascript" charset="UTF-8" src="//cdn.cookie-script.com/s/cc078bb6a3986b656b18212f026d9f86.js"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-BBFP4LTFYQ"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-BBFP4LTFYQ');
+</script>
+<script type="text/javascript">
+(function(h,o,t,j,a,r){
+h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+h._hjSettings={hjid:2992237,hjsv:6};
+a=o.getElementsByTagName('head')[0];
+r=o.createElement('script');r.async=1;
+r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+a.appendChild(r);
+})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+<script src="/landing/js/app.js"></script>
+<script src="/landing/js/core.js"></script>
+<script type="text/javascript" src="/public/plugins/toastr/toastr.min.js"></script>
+
+
+<iframe id="_hjSafeContext_8754076" title="_hjSafeContext" tabindex="-1" aria-hidden="true" src="about:blank" style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;"></iframe>
+    <style data-type="cookiescriptstyles">
+      #cookiescript_injected {
+    background-color: #F4F4F4;
+    z-index: 999997;
+    opacity: 1;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: 'Open Sans', Arial, 'Trebuchet MS', 'Segoe UI', 'Helvetica', sans-serif;
+    box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.35);
+    color: #333333;
+    box-sizing: border-box;
+}
+.cookiescript_checkbox_label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding:0 4px;
+    line-height: 1.5;
+    margin:0;
+	text-align: left;
+}
+#cookiescript_close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 29px;
+    line-height: 13px;
+    cursor: pointer;
+    color: #333333;
+    height: 15px;
+    width: 15px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    letter-spacing: 0;
+    font-family: 'Trebuchet MS', 'Arial', sans-serif;
+    font-weight: 100;
+    opacity: 0.85;
+    z-index: 999999;
+}
+
+#cookiescript_buttons {
+    display: flex;
+    flex-direction: row;
+    font-weight: 700;
+}
+#cookiescript_manage_wrap {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.1px;
+    font-weight: 500;
+}
+#cookiescript_manage {
+    display: inline;
+    cursor: pointer;
+    color: #333333;
+    opacity:0.85;
+}
+#cookiescript_manage #cookiescript_manageicon .cookiescript_gear {
+    fill: #333333;
+}
+#cookiescript_manage:hover #cookiescript_manageicon .cookiescript_gear {
+    fill: #6BBE6B;;
+}
+
+svg#cookiescript_manageicon {
+    width: 15px;
+    height: 15px;
+    display: inline;
+    margin: 0 5px 0 0;
+    padding: 0;
+    position: relative;
+    top: 3px;
+    vertical-align: baseline;
+}
+#cookiescript_header {
+    background-color: transparent;
+    z-index: 999998;
+    color: #333333;
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    opacity:1;
+}
+.cookiescript_checkbox {
+    display: flex;
+    flex-direction: row;
+}
+input.cookiescript_checkbox_input {
+}
+span.cookiescript_checkbox_text {
+    display: inline-block;
+    font-size: 11px;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #333333;
+}
+
+#cookiescript_save {
+    border: 0;
+    transition: all 0.25s ease 0s;
+    background-color: #6BBE6B;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-size: 11px;
+    text-align: center;
+    line-height: 3.2;
+    letter-spacing: 0.4px;
+}
+/*IE 9 fixes*/
+@media screen and (min-width:0\0) and (min-resolution: .001dpcm) {
+    .cookiescript_checkbox_label {
+        position: relative;
+        top:-10px;
+    }
+    #cookiescript_accept, #cookiescript_reject, #cookiescript_save{
+    	display: inline-block;
+    }
+    #cookiescript_buttons{
+    	text-align:center;
+    }
+}
+#cookiescript_save{
+    display: none;
+}
+#cookiescript_reject {
+    border: 1px solid #333333;
+    text-align: center;
+    line-height: 3;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #333333;
+    background: #F4F4F4;
+}
+#cookiescript_accept {
+	transition: all 0.25s ease 0s;
+	text-transform: uppercase;
+	font-size: 11px;
+	text-align: center;
+	letter-spacing: 0.4px;
+	border: 0;
+	background-color: #6BBE6B;
+	color: #FFFFFF;
+	line-height: 3.2;
+}
+
+#cookiescript_accept, #cookiescript_reject, #cookiescript_save {
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition-duration: 100ms;
+    transition-timing-function: ease-in-out;
+    min-width: 103px;
+}
+.cookiescript_bigger {
+    transform: scale(1.1);
+}
+#cookiescript_link {
+    text-decoration: none;
+    color: #333333;
+    font-size: 9px;
+    text-align: center;
+    font-weight: 400;
+    text-transform: uppercase;
+    opacity: 0.8;
+	display:inline !important;
+}
+
+#cookiescript_readmore,
+#cookiescript_reportlink,
+#cookiescript_cookiescriptlink {
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    margin: 0;
+    transition: all 100ms ease 0s;
+    background-color: transparent;
+    color: #333333;
+    display: inline;
+    font-size: 11px;
+}
+
+#cookiescript_description {
+    color: #333333;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    line-height: 1.7;
+    font-weight: 400;
+    opacity: 0.85;
+}
+#cookiescript_checkboxs {
+}
+#cookiescript_close:hover,
+#cookiescript_manage:hover,
+#cookiescript_link:hover
+{
+    opacity: 1;
+}
+
+#cookiescript_reject:hover {
+    background-color: #e1e1e1;
+}
+
+#cookiescript_accept:hover{
+	background-color: #63b063;
+}
+#cookiescript_save:hover {
+    background-color: #63b063;
+}
+
+#cookiescript_readmore:hover,
+#cookiescript_reportlink:hover,
+#cookiescript_cookiescriptlink:hover
+{
+    color: #6BBE6B;
+}
+
+#cookiescript_badge {
+    position: fixed;
+    line-height: 0;
+    cursor: pointer;
+    z-index: 99999;
+    font-size: 0;
+    color: #999;
+left: 10px;
+    display: flex;
+    flex-direction: row;
+    opacity: 1;
+}
+
+#cookiescript_badgetext{
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Open Sans', Arial, 'Trebuchet MS', 'Segoe UI', 'Helvetica', sans-serif;
+    overflow: hidden;
+    transition-duration: 500ms;
+    white-space: nowrap;
+    padding-right: 0;
+    color: #333333;
+}
+
+#cookiescript_badgesvg{
+    width:40px;
+    height: 40px;
+}
+
+
+
+#cookiescript_badge {
+bottom: 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    padding-top:10px;
+    padding-bottom: 8px;
+    padding-left:12px;
+    padding-right:12px;
+    transition-duration: 200ms;
+    box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.2);
+    background: #F4F4F4;
+}
+#cookiescript_badgetext {
+    font-size: 11px;
+    line-height: 1;
+}
+#cookiescript_badge:hover{
+    padding-bottom: 13px;
+}
+@media only screen and (max-width: 414px) {
+    #cookiescript_badge {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+}
+
+@media print{
+    #cookiescript_injected{
+        display:none;
+    }
+}
+
+
+
+
+#cookiescript_injected_fsd {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(17, 17, 17, 0.5) !important;
+    z-index: 999996;
+	overflow-y: auto;
+}
+
+#cookiescript_fsd_wrapper {
+    max-width: 850px;
+	width: 95%;
+    margin: 0 auto 3% auto;
+	top: 10%;
+    line-height: 18px;
+    letter-spacing: normal;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+	background-color: #f3f3f3;
+    z-index: 999997;
+    opacity: 1;
+    font-size: 14px;
+    font-weight: normal;
+    font-family: 'Open Sans', Arial, 'Trebuchet MS', 'Segoe UI', 'Helvetica', sans-serif;
+    box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.35);
+    color: #4d4d4d;
+    align-items: center;
+    overflow: hidden;
+    outline: none;
+    max-height: 80%;
+    box-sizing: border-box;
+	cursor: default;
+	min-height: 500px;
+}
+
+
+.cookiescript_fsd_header {
+	min-height: 57px;
+	border-bottom: 1px solid #e2e2e2;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #ffffff;
+}
+.cookiescript_fsd_logo_a{
+	margin-left: 20px;
+}
+.cookiescript_fsd_logo{
+	height: 27px;
+	width: auto;
+	display: block;
+	max-width: 100%;
+}
+.cookiescript_fsd_language_drop_down {
+    position: absolute;
+    right: 75px;
+	top: 17px;
+}
+
+.cookiescript_fsd_main {
+    width: 100%;
+	background-color: #ffffff;
+}
+
+.cookiescript_fsd_main_info {
+    padding: 25px 50px;
+}
+
+.cookiescript_fsd_title {
+    background-color: transparent;
+    z-index: 999998;
+    color: #4d4d4d;
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 600;
+    opacity:1;
+}
+
+.cookiescript_fsd_description {
+    color: #4d4d4d;
+    font-size: 13px;
+    line-height: 1.6;
+    font-weight: 400;
+    opacity: 0.85;
+	margin-top: 21px;
+}
+
+#cookiescript_fsd_wrapper #cookiescript_readmore{
+	font-size: 13px;
+	color: #3fb6ee;
+	text-decoration: none;
+}
+#cookiescript_fsd_wrapper #cookiescript_readmore:hover{
+	text-decoration: underline;
+}
+
+.cookiescript_fsd_tabs {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+	flex-direction: row;
+    width: 100%;
+}
+
+.cookiescript_fsd_tabs > div {
+	cursor: pointer;
+	width: 50%;
+	text-transform: uppercase;
+	font-size: 14px;
+	text-align: center;
+	line-height: 1.7;
+	font-weight: bold;
+	border-top: 1px solid transparent;
+	transition: all 300ms ease 0s;
+	padding: 12px 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #ffffff;
+}
+
+.cookiescript_fsd_tabs > .cookiescript_active {
+    border-top: 1px solid #3fb6ee;
+    background-color: #f3f3f3;
+    color: #3fb6ee;
+}
+
+.cookiescript_fsd_tabs_content {
+    background-color: #f3f3f3;
+    padding: 5px 50px 10px 50px;
+    width: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+	--scrollbar-width: 8px;
+	--mask-height: 35px;
+	--mask-image-content: linear-gradient( to bottom, transparent, black var(--mask-height), black calc(100% - var(--mask-height)), transparent );
+	--mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+	--mask-image-scrollbar: linear-gradient(black, black);
+	--mask-size-scrollbar: var(--scrollbar-width) 100%;
+	mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+	mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+	mask-position: 0 0, 100% 0;
+	mask-repeat: no-repeat, no-repeat;
+	-webkit-mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+	-webkit-mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+	-webkit-mask-position: 0 0, 100% 0;
+	-webkit-mask-repeat: no-repeat, no-repeat;
+}
+
+.cookiescript_fsd_tabs_content .cookiescript_hidden {
+    opacity: 0;
+    height: 0 !important;
+    overflow: hidden;
+	padding: 0 !important;
+	min-height: 0 !important;
+}
+
+.cookiescript_fsd_category {
+    border-bottom: 1px solid #e2e2e2;
+    padding-top: 23px;
+    padding-bottom: 17px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cookiescript_fsd_category:last-child {
+    border-bottom: 0;
+}
+
+.cookiescript_fsd_category .cookiescript_hidden {
+    opacity: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+	padding: 0 !important;
+	max-height: 0;
+	margin: 0;
+	height: auto !important;
+		transition: max-height 300ms ease 200ms, opacity ease 200ms, margin-top 100ms ease 100ms;
+	}
+
+.cookiescript_fsd_category_main {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cookiescript_fsd_category_info {
+    flex: 5;
+    padding-right: 10px;
+}
+
+.cookiescript_fsd_category_control {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.cookiescript_fsd__category_name {
+    font-size: 14px;
+    font-weight: 600;
+	margin-bottom: 8px;
+}
+
+.cookiescript_category_description {
+	font-size: 13px;
+	padding-bottom: 5px;
+	line-height: 1.6;
+}
+
+.cookiescript_fsd_cookies {
+	border: 1px solid #e2e2e2;
+	border-radius: 5px;
+	overflow-y: auto;
+	margin-top: 15px;
+	max-height: 222px;
+		transition: max-height 300ms ease, opacity 200ms ease 300ms, margin-top 100ms ease 100ms;
+	}
+
+
+.cookiescript_fsd_cookies_control {
+    color: #3fb6ee;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.cookiescript_fsd_cookies_control .cookiescript_hidden {
+    display: none;
+}
+
+.cookiescript_fsd_cookies_control  span{
+	margin-right: 7px;
+}
+
+.cookiescript_fsd_cookies_control svg {
+    width: 10px;
+    height: 10px;
+    font-size: 10px;
+}
+
+.cookiescript_fsd_cookies_control.active svg {
+    width: 10px;
+    height: 10px;
+    font-size: 10px;
+    transform: rotate(180deg);
+}
+
+.cookiescript_fsd_cookies_table {
+    width: 100%;
+}
+
+.cookiescript_fsd_cookies_table,
+.cookiescript_fsd_cookies_table tbody,
+.cookiescript_fsd_cookies_table thead,
+.cookiescript_fsd_cookies_table tr,
+.cookiescript_fsd_cookies_table th,
+.cookiescript_fsd_cookies_table td {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    vertical-align: baseline;
+    background-color: #ffffff;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+
+.cookiescript_fsd_cookies_table tr:last-child td{
+    border-bottom: 0;
+}
+
+.cookiescript_fsd_cookies_table td, .cookiescript_fsd_cookies_table th {
+    white-space: normal;
+    font-size: 13px;
+    text-align: left;
+    margin: 0;
+}
+.cookiescript_fsd_cookies_table th {
+	font-weight: 600;
+	padding: 8px 8px;
+	line-height: 1.4;
+	word-break: keep-all;
+	vertical-align: middle;
+}
+
+.cookiescript_fsd_cookies_table td {
+	padding: 7px 8px;
+	line-height: 1.6;
+	vertical-align: top;
+	font-weight: 400;
+	border: 0;
+	border-top: 1px solid #e2e2e2;
+	color: #4d4d4d;
+}
+
+.cookiescript_fsd_cookies_table th:last-child {
+    padding-right: 10px;
+}
+
+    .cookiescript_fsd_cookies_table td:nth-child(1), .cookiescript_fsd_cookies_table th:nth-child(1) {
+    padding-left: 15px;
+    word-break: normal;
+}
+
+.cookiescript_fsd_cookies_table td:nth-child(2) {
+    color: #3fb6ee;
+}
+
+.cookiescript_fsd_cookies_table td:nth-child(3), .cookiescript_fsd_cookies_table th:nth-child(3) {
+    text-align: center;
+}
+.cookiescript_vendor_name a{
+	text-decoration: underline;
+	font-weight: bold;
+	color: #3fb6ee;
+	line-height: normal;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: transparent;
+	font-size: 13px;
+}
+.cookiescript_vendor_name a:hover {
+	text-decoration: underline;
+	color: #3fb6ee;
+}
+
+.cookiescript_fsd_footer {
+    border-top: 1px solid #e2e2e2;
+    width: 100%;
+	background-color: #ffffff;
+}
+#cookiescript_fsd_wrapper #cookiescript_declarationwrap{
+		transition: opacity 200ms ease 0ms, height 0ms ease 200ms;
+	}
+#cookiescript_fsd_wrapper #cookiescript_aboutwrap{
+	font-size: 13px;
+	padding: 23px 0;
+	line-height: 1.6;
+	text-align: left;
+	font-weight: normal;
+	box-sizing: border-box;
+	transition: opacity 200ms ease 0ms;
+	overflow: auto;
+	min-height: 181px;
+}
+
+#cookiescript_setting_advertising_wrap {
+    font-size: 12px;
+}
+
+#cookiescript_iab_type {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #e2e2e2;
+    flex-wrap: wrap;
+}
+
+#cookiescript_iab_type > div {
+    cursor: pointer;
+    padding: 0 9px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #f5f5f5;
+    color: #4d4d4d;
+    line-height: 2;
+    margin: 3px 5px;
+    white-space: nowrap;
+}
+
+#cookiescript_iab_type .cookiescript_active {
+    background: #3fb6ee;
+    color: #FEFEFE;
+}
+
+
+.cookiescript_fsd_cookies::-webkit-scrollbar-track,
+.cookiescript_fsd_tabs_content::-webkit-scrollbar-track {
+    background-color: #DADADA;
+}
+
+.cookiescript_fsd_cookies::-webkit-scrollbar,
+.cookiescript_fsd_tabs_content::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.cookiescript_fsd_cookies::-webkit-scrollbar-thumb,
+.cookiescript_fsd_tabs_content::-webkit-scrollbar-thumb {
+    background-color: #6BBE6B;
+}
+
+
+
+@media screen and (min-width:0\0) and (min-resolution: .001dpcm) {
+    #cookiescript_iab_type > div{
+        display:inline-block;
+    }
+}
+
+/* --- OVERRIDE ----*/
+
+#cookiescript_injected_fsd #cookiescript_close {
+	top: 18px;
+	font-size: 37px;
+	right: 25px;
+	color: #4d4d4d;
+	height: 18px;
+	width: 18px;
+}
+
+#cookiescript_injected_fsd #cookiescript_buttons {
+    justify-content: flex-start;
+    padding: 5px 15px;
+}
+
+#cookiescript_injected_fsd #cookiescript_accept, #cookiescript_injected_fsd #cookiescript_save, #cookiescript_injected_fsd #cookiescript_reject {
+		flex-grow: unset;
+		padding: 0px 25px;
+	margin: 10px 5px;
+	font-size: 13px;
+	border-radius: 30px;
+	line-height: 3;
+}
+#cookiescript_injected_fsd #cookiescript_buttons{
+	flex-direction: row;
+}
+#cookiescript_injected_fsd #cookiescript_buttons #cookiescript_save {
+    margin-right: auto;
+}
+
+#cookiescript_injected_fsd .cookiescript-iab-itemContainer {
+    border: 1px solid #e2e2e2;
+	background-color: #ffffff;
+	padding: 10px;
+}
+
+#cookiescript_injected_fsd .cookiescript-iab-header,
+#cookiescript_injected_fsd .cookiescript-iab-itemHeader,
+#cookiescript_injected_fsd .cookiescript-iab-itemHeaderAction {
+    color: #4d4d4d;
+}
+
+#cookiescript_injected_fsd .cookiescript-iab-itemHeaderAction {
+    border-color: #4d4d4d;;
+}
+
+#cookiescript_injected_fsd #cookiescript_accept {
+    background-color: #ffffff;
+    color: #4d4d4d;
+    border: 1px solid #4d4d4d;
+    order: 1}
+
+#cookiescript_injected_fsd #cookiescript_accept:hover {
+    background-color: #ececec;
+}
+
+#cookiescript_injected_fsd #cookiescript_reject {
+    background-color: #ffffff;
+    color: #4d4d4d;
+    border: 1px solid #4d4d4d;
+    order: 3}
+
+#cookiescript_injected_fsd #cookiescript_reject:hover {
+    background-color: #ececec;
+}
+
+#cookiescript_injected_fsd #cookiescript_save {
+    display: inline-block;
+    background-color: #6BBE6B;
+    color: #ffffff;
+    border: 1px solid #6BBE6B;
+    order: 2}
+
+#cookiescript_injected_fsd #cookiescript_save:hover {
+    background-color: #63b063;
+}
+
+/*Switches color reload*/
+#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled .mdc-switch__handle::after {
+    background: #6BBE6B;
+}
+
+#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:hover:not(:focus):not(:active) .mdc-switch__handle::after {
+    background: #68b968;
+}
+
+#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:focus:not(:active) .mdc-switch__handle::after {
+    background: #68b968;
+}
+
+#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:active .mdc-switch__handle::after {
+    background: #68b968;
+}
+
+#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:hover:not(:focus) .mdc-switch__ripple::before,
+#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:hover:not(:focus) .mdc-switch__ripple::after{
+    background: #6BBE6B;
+}
+
+#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:focus .mdc-switch__ripple::before,
+#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:focus .mdc-switch__ripple::after {
+    background: #6BBE6B;
+}
+
+#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:active .mdc-switch__ripple::before,
+#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:active .mdc-switch__ripple::after {
+    background: #6BBE6B;
+}
+
+#cookiescript_injected_fsd .mdc-switch:enabled .mdc-switch__track::after {
+    background: #6BBE6B;
+    opacity: 0.3;
+}
+
+#cookiescript_injected_fsd .mdc-switch:enabled:hover:not(:focus):not(:active) .mdc-switch__track::after {
+    background: #6BBE6B;
+    opacity: 0.3;
+}
+
+#cookiescript_injected_fsd .mdc-switch:enabled:focus:not(:active) .mdc-switch__track::after {
+    background: #6BBE6B;
+    opacity: 0.3;
+}
+
+#cookiescript_injected_fsd .mdc-switch:enabled:active .mdc-switch__track::after {
+    background: #6BBE6B;
+    opacity: 0.3;
+}
+
+
+#cookiescript_fsd_wrapper {
+    border-radius: 10px;
+}
+
+#cookiescript_iab_type > div {
+    border-radius: 20px;
+}
+.cookiescript_fsd_cookies::-webkit-scrollbar-track,
+.cookiescript_fsd_tabs_content::-webkit-scrollbar-track
+#cookiescript_iabwrap::-webkit-scrollbar-thumb,
+#cookiescript_aboutwrap::-webkit-scrollbar-thumb{
+    border-radius: 6px;
+}
+.cookiescript_fsd_cookies::-webkit-scrollbar-thumb,
+.cookiescript_fsd_tabs_content::-webkit-scrollbar-thumb,
+#cookiescript_iabwrap::-webkit-scrollbar-thumb,
+#cookiescript_aboutwrap::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 414px) {
+	#cookiescript_fsd_wrapper {
+		width: 100%;
+		height: 100%;
+		max-height: 100%;
+		top: 0;
+		border-radius: 0;
+		margin: 0;
+	}
+
+	.cookiescript_fsd_main_info {
+		padding: 13px 20px;
+		overflow-y: auto;
+		max-height: 140px;
+	}
+	.cookiescript_fsd_description{
+		margin-top: 8px;
+	}
+	.cookiescript_fsd_tabs > div {
+		padding: 6px;
+		font-size: 12px;
+	}
+
+	.cookiescript_fsd_tabs_content {
+		padding: 5px 20px 10px 20px;
+	}
+
+	.cookiescript_fsd_cookies_table thead {
+		display: none;
+	}
+
+	.cookiescript_fsd_cookies_table td {
+		display: flex;
+		border-bottom: 0px;
+	}
+
+	.cookiescript_fsd_cookies_table tr td:last-child {
+		border-bottom: 0;
+	}
+
+	.cookiescript_fsd_cookies_table td {
+		border-top: 0;
+	}
+
+	.cookiescript_fsd_cookies_table td::before {
+		content: attr(label);
+		font-weight: bold;
+		width: 120px;
+		min-width: 120px;
+		text-align: left;
+	}
+
+	.cookiescript_fsd_cookies_table td:nth-child(2):before {
+		color: #4d4d4d;
+	}
+
+	.cookiescript_category_description {
+		text-align: left;
+	}
+
+	.cookiescript_fsd_cookies_table td:nth-child(1),
+	.cookiescript_fsd_cookies_table th:nth-child(1) {
+		padding-left: 7px;
+		font-weight: bold;
+		border-top: 1px solid #e2e2e2;
+	}
+
+	.cookiescript_fsd_cookies_table tr:nth-child(1) td:nth-child(1),
+	.cookiescript_fsd_cookies_table tr:nth-child(1) th:nth-child(1) {
+		border-top: 0px;
+	}
+
+	.cookiescript_fsd_cookies_table td:last-child {
+		border-bottom: none;
+	}
+
+	.cookiescript_fsd_cookies_table tr:nth-child(even) {
+		background: #f5f5f5;
+	}
+
+	.cookiescript_fsd_cookies_table tr:nth-child(even) td {
+		border-bottom: 0px solid #FFF;
+	}
+
+	#cookiescript_injected_fsd #cookiescript_buttons {
+		margin-bottom: 0;
+	}
+
+	#cookiescript_injected_fsd #cookiescript_buttons #cookiescript_accept,
+	#cookiescript_injected_fsd #cookiescript_buttons #cookiescript_save,
+	#cookiescript_injected_fsd #cookiescript_buttons #cookiescript_reject {
+		flex-grow: 1;
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		padding: 0 15px;
+	}
+
+	.cookiescript_fsd_language_drop_down {
+		right: 40px;
+	}
+
+	#cookiescript_injected_fsd #cookiescript_close{
+		right:14px;
+	}
+	
+
+}
+
+
+
+
+.cookiescript_custom_select {
+    cursor: pointer;
+    color: inherit;
+    background-color: inherit;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.cookiescript_custom_select_selected {
+	display: flex;
+	align-items: center;
+	padding: 0 10px;
+	box-sizing: border-box;
+	font-size: 11px;
+}
+
+.cookiescript_custom_select_selected svg {
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+}
+
+.cookiescript_custom_select_items {
+    /*display: none;*/
+    background-color: #ffffff;
+    position: relative;
+    z-index: 9999;
+    /*padding-top: 5px;*/
+    box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.35);
+	max-height: 0;
+	transition: max-height 200ms ease;
+	overflow: hidden;
+	border-radius: 5px;
+	top: 7px;
+}
+
+.cookiescript_custom_select_items > .cookiescript_custom_select_item:first-child{
+	margin-top:5px;
+}
+.cookiescript_custom_select_items > .cookiescript_custom_select_item:last-child{
+	margin-bottom:5px;
+}
+
+
+.cookiescript_custom_select.open .cookiescript_custom_select_selected svg {
+    transform: rotate(180deg);
+}
+.cookiescript_custom_select.open .cookiescript_custom_select_items {
+    display: block;
+	max-height: 298px;
+}
+
+.cookiescript_custom_select_item {
+    display: flex;
+    padding: 7px 15px 7px 15px;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.cookiescript_custom_select_item:hover {
+    background-color: #f8f8f8;
+}
+
+.cookiescript_custom_select_flag {
+	display: flex;
+	align-items: center;
+	border-radius: 20px;
+	width: 20px;
+	height: 20px;
+	margin-right: 9px;
+	overflow: hidden;
+	justify-content: center;
+	border: 0;
+	box-sizing: content-box;
+	box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.39);
+	-webkit-box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.39);
+}
+
+.cookiescript_custom_select_flag img {
+	width: auto;
+	height: 100%;
+}
+.cookiescript_rtl {
+    direction:rtl;
+}
+
+
+/*Start Checkboxes*/
+#cookiescript_injected_fsd .mdc-checkbox,
+#cookiescript_injected .mdc-checkbox {
+    box-sizing: content-box !important;
+}
+#cookiescript_injected_fsd .mdc-checkbox__native-control,
+#cookiescript_injected .mdc-checkbox__native-control {
+    display: block;
+    z-index: 1;
+}
+#cookiescript_injected_fsd .mdc-checkbox .mdc-checkbox__native-control:focus~.mdc-checkbox__background::before, 
+#cookiescript_injected .mdc-checkbox .mdc-checkbox__native-control:focus~.mdc-checkbox__background::before, 
+#cookiescript_injected_fsd .mdc-checkbox .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background::before,
+#cookiescript_injected .mdc-checkbox .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background::before {
+    background-color: #FFFFFF;
+}
+
+#cookiescript_injected .mdc-checkbox,#cookiescript_injected_fsd .mdc-checkbox{display:inline-block;position:relative;flex:0 0 18px;box-sizing:content-box;width:18px;height:18px;line-height:0;white-space:nowrap;cursor:pointer;vertical-align:bottom;padding:11px}#cookiescript_injected .mdc-checkbox .mdc-checkbox__native-control:checked~.mdc-checkbox__background::before,#cookiescript_injected .mdc-checkbox .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background::before,#cookiescript_injected_fsd .mdc-checkbox .mdc-checkbox__native-control:checked~.mdc-checkbox__background::before,#cookiescript_injected_fsd .mdc-checkbox .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background::before{background-color:#333333}@supports not (-ms-ime-align:auto){#cookiescript_injected .mdc-checkbox .mdc-checkbox__native-control:checked~.mdc-checkbox__background::before,#cookiescript_injected .mdc-checkbox .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background::before,#cookiescript_injected_fsd .mdc-checkbox .mdc-checkbox__native-control:checked~.mdc-checkbox__background::before,#cookiescript_injected_fsd .mdc-checkbox .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background::before{background-color:var(--mdc-theme-secondary, #333333)}}#cookiescript_injected .mdc-checkbox .mdc-checkbox__background,#cookiescript_injected_fsd .mdc-checkbox .mdc-checkbox__background{top:11px;left:11px}#cookiescript_injected .mdc-checkbox .mdc-checkbox__background::before,#cookiescript_injected_fsd .mdc-checkbox .mdc-checkbox__background::before{top:-13px;left:-13px;width:40px;height:40px}#cookiescript_injected .mdc-checkbox .mdc-checkbox__native-control,#cookiescript_injected_fsd .mdc-checkbox .mdc-checkbox__native-control{top:0;right:0;left:0;width:40px;height:40px}#cookiescript_injected .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate)~.mdc-checkbox__background,#cookiescript_injected_fsd .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate)~.mdc-checkbox__background{border-color:#333333;background-color:transparent}#cookiescript_injected .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,#cookiescript_injected .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background,#cookiescript_injected_fsd .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background,#cookiescript_injected_fsd .mdc-checkbox__native-control:enabled:indeterminate~.mdc-checkbox__background{border-color:#333333;background-color:#333333}#cookiescript_injected .mdc-checkbox__native-control[disabled]:not(:checked):not(:indeterminate)~.mdc-checkbox__background,#cookiescript_injected_fsd .mdc-checkbox__native-control[disabled]:not(:checked):not(:indeterminate)~.mdc-checkbox__background{border-color:rgba(51,51,51,0.26);background-color:transparent}#cookiescript_injected .mdc-checkbox__native-control[disabled]:checked~.mdc-checkbox__background,#cookiescript_injected .mdc-checkbox__native-control[disabled]:indeterminate~.mdc-checkbox__background,#cookiescript_injected_fsd .mdc-checkbox__native-control[disabled]:checked~.mdc-checkbox__background,#cookiescript_injected_fsd .mdc-checkbox__native-control[disabled]:indeterminate~.mdc-checkbox__background{border-color:transparent;background-color:rgba(51,51,51,0.26)}#cookiescript_injected .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark,#cookiescript_injected_fsd .mdc-checkbox__native-control:enabled~.mdc-checkbox__background .mdc-checkbox__checkmark{color:#F4F4F4}#cookiescript_injected .mdc-checkbox__native-control:disabled~.mdc-checkbox__background .mdc-checkbox__checkmark,#cookiescript_injected_fsd .mdc-checkbox__native-control:disabled~.mdc-checkbox__background .mdc-checkbox__checkmark{color:#F4F4F4}#cookiescript_injected .mdc-checkbox__background,#cookiescript_injected_fsd .mdc-checkbox__background{display:inline-flex;position:absolute;align-items:center;justify-content:center;box-sizing:border-box;width:18px;height:18px;border:2px solid #333333;border-radius:2px;background-color:transparent;pointer-events:none;will-change:background-color,border-color;transition:background-color 90ms 0s cubic-bezier(.4,0,.6,1),border-color 90ms 0s cubic-bezier(.4,0,.6,1)}#cookiescript_injected .mdc-checkbox__background .mdc-checkbox__background::before,#cookiescript_injected_fsd .mdc-checkbox__background .mdc-checkbox__background::before{background-color:#000}@supports not (-ms-ime-align:auto){#cookiescript_injected .mdc-checkbox__checkmark,#cookiescript_injected_fsd .mdc-checkbox__checkmark{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;opacity:0;transition:opacity 180ms 0s cubic-bezier(.4,0,.6,1)}#cookiescript_injected .mdc-checkbox__checkmark-path,#cookiescript_injected_fsd .mdc-checkbox__checkmark-path{transition:stroke-dashoffset 180ms 0s cubic-bezier(.4,0,.6,1);stroke:currentColor;stroke-width:3.12px;stroke-dashoffset:29.7833385;stroke-dasharray:29.7833385}#cookiescript_injected .mdc-checkbox__native-control:checked~.mdc-checkbox__background,#cookiescript_injected .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background,#cookiescript_injected_fsd .mdc-checkbox__native-control:checked~.mdc-checkbox__background,#cookiescript_injected_fsd .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background{transition:border-color 90ms 0s cubic-bezier(0,0,.2,1),background-color 90ms 0s cubic-bezier(0,0,.2,1)}#cookiescript_injected .mdc-checkbox__native-control:checked~.mdc-checkbox__background .mdc-checkbox__checkmark-path,#cookiescript_injected .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background .mdc-checkbox__checkmark-path,#cookiescript_injected_fsd .mdc-checkbox__native-control:checked~.mdc-checkbox__background .mdc-checkbox__checkmark-path,#cookiescript_injected_fsd .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background .mdc-checkbox__checkmark-path{stroke-dashoffset:0}#cookiescript_injected .mdc-checkbox__background::before,#cookiescript_injected_fsd .mdc-checkbox__background::before{position:absolute;-webkit-transform:scale(0,0);transform:scale(0,0);border-radius:50%;opacity:0;pointer-events:none;content:"";will-change:opacity,transform;transition:opacity 90ms 0s cubic-bezier(.4,0,.6,1),-webkit-transform 90ms 0s cubic-bezier(.4,0,.6,1);transition:opacity 90ms 0s cubic-bezier(.4,0,.6,1),transform 90ms 0s cubic-bezier(.4,0,.6,1);transition:opacity 90ms 0s cubic-bezier(.4,0,.6,1),transform 90ms 0s cubic-bezier(.4,0,.6,1),-webkit-transform 90ms 0s cubic-bezier(.4,0,.6,1)}#cookiescript_injected .mdc-checkbox__native-control:focus~.mdc-checkbox__background::before,#cookiescript_injected_fsd .mdc-checkbox__native-control:focus~.mdc-checkbox__background::before{-webkit-transform:scale(1);transform:scale(1);opacity:.12;transition:opacity 80ms 0s cubic-bezier(0,0,.2,1),-webkit-transform 80ms 0s cubic-bezier(0,0,.2,1);transition:opacity 80ms 0s cubic-bezier(0,0,.2,1),transform 80ms 0s cubic-bezier(0,0,.2,1);transition:opacity 80ms 0s cubic-bezier(0,0,.2,1),transform 80ms 0s cubic-bezier(0,0,.2,1),-webkit-transform 80ms 0s cubic-bezier(0,0,.2,1)}#cookiescript_injected .mdc-checkbox__native-control,#cookiescript_injected_fsd .mdc-checkbox__native-control{position:absolute;margin:0;padding:0;opacity:0;cursor:inherit}#cookiescript_injected .mdc-checkbox__native-control:disabled,#cookiescript_injected_fsd .mdc-checkbox__native-control:disabled{cursor:default;pointer-events:none}#cookiescript_injected .mdc-checkbox__native-control:checked~.mdc-checkbox__background .mdc-checkbox__checkmark,#cookiescript_injected_fsd .mdc-checkbox__native-control:checked~.mdc-checkbox__background .mdc-checkbox__checkmark{transition:opacity 180ms 0s cubic-bezier(0,0,.2,1),-webkit-transform 180ms 0s cubic-bezier(0,0,.2,1);transition:opacity 180ms 0s cubic-bezier(0,0,.2,1),transform 180ms 0s cubic-bezier(0,0,.2,1);transition:opacity 180ms 0s cubic-bezier(0,0,.2,1),transform 180ms 0s cubic-bezier(0,0,.2,1),-webkit-transform 180ms 0s cubic-bezier(0,0,.2,1);opacity:1}#cookiescript_injected .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background .mdc-checkbox__checkmark,#cookiescript_injected_fsd .mdc-checkbox__native-control:indeterminate~.mdc-checkbox__background .mdc-checkbox__checkmark{-webkit-transform:rotate(45deg);transform:rotate(45deg);opacity:0;transition:opacity 90ms 0s cubic-bezier(.4,0,.6,1),-webkit-transform 90ms 0s cubic-bezier(.4,0,.6,1);transition:opacity 90ms 0s cubic-bezier(.4,0,.6,1),transform 90ms 0s cubic-bezier(.4,0,.6,1);transition:opacity 90ms 0s cubic-bezier(.4,0,.6,1),transform 90ms 0s cubic-bezier(.4,0,.6,1),-webkit-transform 90ms 0s cubic-bezier(.4,0,.6,1)}#cookiescript_injected .mdc-checkbox,#cookiescript_injected_fsd .mdc-checkbox{-webkit-tap-highlight-color:transparent}}
+/*End Checkboxes*/
+
+
+/*Start Toggle*/
+
+#cookiescript_injected .mdc-elevation-overlay,#cookiescript_injected_fsd .mdc-elevation-overlay{position:absolute;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity 280ms cubic-bezier(.4,0,.2,1);background-color:#fff}#cookiescript_injected .mdc-switch,#cookiescript_injected_fsd .mdc-switch{align-items:center;background:0 0;border:none;cursor:pointer;display:inline-flex;flex-shrink:0;margin:0;outline:0;overflow:visible;padding:0;position:relative}#cookiescript_injected .mdc-switch:disabled,#cookiescript_injected_fsd .mdc-switch:disabled{cursor:default;pointer-events:none}#cookiescript_injected .mdc-switch input[type=checkbox],#cookiescript_injected_fsd .mdc-switch input[type=checkbox]{display:none;visibility:hidden}#cookiescript_injected .mdc-switch__track,#cookiescript_injected_fsd .mdc-switch__track{overflow:hidden;position:relative;width:100%}#cookiescript_injected .mdc-switch__track::after,#cookiescript_injected .mdc-switch__track::before,#cookiescript_injected_fsd .mdc-switch__track::after,#cookiescript_injected_fsd .mdc-switch__track::before{border:1px solid transparent;border-radius:inherit;box-sizing:border-box;content:"";height:100%;left:0;position:absolute;width:100%}#cookiescript_injected .mdc-switch__track::before,#cookiescript_injected_fsd .mdc-switch__track::before{transition:-webkit-transform 75ms 0s cubic-bezier(0,0,.2,1);transition:transform 75ms 0s cubic-bezier(0,0,.2,1);-webkit-transform:translateX(0);transform:translateX(0)}#cookiescript_injected .mdc-switch__track::after,#cookiescript_injected_fsd .mdc-switch__track::after{transition:-webkit-transform 75ms 0s cubic-bezier(.4,0,.6,1);transition:transform 75ms 0s cubic-bezier(.4,0,.6,1);-webkit-transform:translateX(-100%);transform:translateX(-100%)}#cookiescript_injected .mdc-switch__track[dir=rtl]::after,#cookiescript_injected [dir=rtl] .mdc-switch__track::after,#cookiescript_injected_fsd .mdc-switch__track[dir=rtl]::after,#cookiescript_injected_fsd [dir=rtl] .mdc-switch__track::after{-webkit-transform:translateX(100%);transform:translateX(100%)}#cookiescript_injected .mdc-switch--selected .mdc-switch__track::before,#cookiescript_injected_fsd .mdc-switch--selected .mdc-switch__track::before{transition:-webkit-transform 75ms 0s cubic-bezier(.4,0,.6,1);transition:transform 75ms 0s cubic-bezier(.4,0,.6,1);-webkit-transform:translateX(100%);transform:translateX(100%)}#cookiescript_injected .mdc-switch--selected .mdc-switch__track[dir=rtl]::before,#cookiescript_injected [dir=rtl] .mdc-switch--selected .mdc-switch__track::before,#cookiescript_injected_fsd .mdc-switch--selected .mdc-switch__track[dir=rtl]::before,#cookiescript_injected_fsd [dir=rtl] .mdc-switch--selected .mdc-switch__track::before{-webkit-transform:translateX(-100%);transform:translateX(-100%)}#cookiescript_injected .mdc-switch--selected .mdc-switch__track::after,#cookiescript_injected_fsd .mdc-switch--selected .mdc-switch__track::after{transition:-webkit-transform 75ms 0s cubic-bezier(0,0,.2,1);transition:transform 75ms 0s cubic-bezier(0,0,.2,1);-webkit-transform:translateX(0);transform:translateX(0)}#cookiescript_injected .mdc-switch__handle-track,#cookiescript_injected_fsd .mdc-switch__handle-track{height:100%;pointer-events:none;position:absolute;top:0;transition:-webkit-transform 75ms 0s cubic-bezier(.4,0,.2,1);transition:transform 75ms 0s cubic-bezier(.4,0,.2,1);left:0;right:auto;-webkit-transform:translateX(0);transform:translateX(0)}#cookiescript_injected .mdc-switch__handle-track[dir=rtl],#cookiescript_injected [dir=rtl] .mdc-switch__handle-track,#cookiescript_injected_fsd .mdc-switch__handle-track[dir=rtl],#cookiescript_injected_fsd [dir=rtl] .mdc-switch__handle-track{left:auto;right:0}#cookiescript_injected .mdc-switch--selected .mdc-switch__handle-track,#cookiescript_injected_fsd .mdc-switch--selected .mdc-switch__handle-track{-webkit-transform:translateX(100%);transform:translateX(100%)}#cookiescript_injected .mdc-switch--selected .mdc-switch__handle-track[dir=rtl],#cookiescript_injected [dir=rtl] .mdc-switch--selected .mdc-switch__handle-track,#cookiescript_injected_fsd .mdc-switch--selected .mdc-switch__handle-track[dir=rtl],#cookiescript_injected_fsd [dir=rtl] .mdc-switch--selected .mdc-switch__handle-track{-webkit-transform:translateX(-100%);transform:translateX(-100%)}#cookiescript_injected .mdc-switch__handle,#cookiescript_injected_fsd .mdc-switch__handle{display:flex;pointer-events:auto;position:absolute;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);left:0;right:auto}#cookiescript_injected .mdc-switch__handle[dir=rtl],#cookiescript_injected [dir=rtl] .mdc-switch__handle,#cookiescript_injected_fsd .mdc-switch__handle[dir=rtl],#cookiescript_injected_fsd [dir=rtl] .mdc-switch__handle{left:auto;right:0}#cookiescript_injected .mdc-switch__handle::after,#cookiescript_injected .mdc-switch__handle::before,#cookiescript_injected_fsd .mdc-switch__handle::after,#cookiescript_injected_fsd .mdc-switch__handle::before{border:1px solid transparent;border-radius:inherit;box-sizing:border-box;content:"";width:100%;height:100%;left:0;position:absolute;top:0;transition:background-color 75ms 0s cubic-bezier(.4,0,.2,1),border-color 75ms 0s cubic-bezier(.4,0,.2,1);z-index:-1}#cookiescript_injected .mdc-switch__shadow,#cookiescript_injected_fsd .mdc-switch__shadow{border-radius:inherit;bottom:0;left:0;position:absolute;right:0;top:0}#cookiescript_injected .mdc-elevation-overlay,#cookiescript_injected_fsd .mdc-elevation-overlay{bottom:0;left:0;right:0;top:0}#cookiescript_injected .mdc-switch__ripple,#cookiescript_injected_fsd .mdc-switch__ripple{left:50%;position:absolute;top:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);z-index:-1}#cookiescript_injected .mdc-switch:disabled .mdc-switch__ripple,#cookiescript_injected_fsd .mdc-switch:disabled .mdc-switch__ripple{display:none}#cookiescript_injected .mdc-switch__icons,#cookiescript_injected_fsd .mdc-switch__icons{height:100%;position:relative;width:100%;z-index:1}#cookiescript_injected .mdc-switch__icon,#cookiescript_injected_fsd .mdc-switch__icon{bottom:0;left:0;margin:auto;position:absolute;right:0;top:0;opacity:0;transition:opacity 30ms 0s cubic-bezier(.4,0,1,1)}#cookiescript_injected .mdc-switch--selected .mdc-switch__icon--on,#cookiescript_injected .mdc-switch--unselected .mdc-switch__icon--off,#cookiescript_injected_fsd .mdc-switch--selected .mdc-switch__icon--on,#cookiescript_injected_fsd .mdc-switch--unselected .mdc-switch__icon--off{opacity:1;transition:opacity 45ms 30ms cubic-bezier(0,0,.2,1)}#cookiescript_injected .mdc-switch,#cookiescript_injected_fsd .mdc-switch{will-change:transform,opacity}@-webkit-keyframes mdc-ripple-fg-radius-in{from{-webkit-animation-timing-function:cubic-bezier(.4,0,.2,1);animation-timing-function:cubic-bezier(.4,0,.2,1);-webkit-transform:translate(0) scale(1);transform:translate(0) scale(1)}to{-webkit-transform:translate(0) scale(1);transform:translate(0) scale(1)}}@keyframes mdc-ripple-fg-radius-in{from{-webkit-animation-timing-function:cubic-bezier(.4,0,.2,1);animation-timing-function:cubic-bezier(.4,0,.2,1);-webkit-transform:translate(0) scale(1);transform:translate(0) scale(1)}to{-webkit-transform:translate(0) scale(1);transform:translate(0) scale(1)}}@-webkit-keyframes mdc-ripple-fg-opacity-in{from{-webkit-animation-timing-function:linear;animation-timing-function:linear;opacity:0}to{opacity:.1}}@keyframes mdc-ripple-fg-opacity-in{from{-webkit-animation-timing-function:linear;animation-timing-function:linear;opacity:0}to{opacity:.1}}@-webkit-keyframes mdc-ripple-fg-opacity-out{from{-webkit-animation-timing-function:linear;animation-timing-function:linear;opacity:.1}to{opacity:0}}@keyframes mdc-ripple-fg-opacity-out{from{-webkit-animation-timing-function:linear;animation-timing-function:linear;opacity:.1}to{opacity:0}}#cookiescript_injected .mdc-switch .mdc-switch__ripple::after,#cookiescript_injected .mdc-switch .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch .mdc-switch__ripple::before{position:absolute;border-radius:50%;opacity:0;pointer-events:none;content:""}#cookiescript_injected .mdc-switch .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch .mdc-switch__ripple::before{transition:opacity 15ms linear,background-color 15ms linear;z-index:1}#cookiescript_injected .mdc-switch .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch .mdc-switch__ripple::after{z-index:0}#cookiescript_injected .mdc-switch.mdc-ripple-upgraded .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-ripple-upgraded .mdc-switch__ripple::before{-webkit-transform:scale(1);transform:scale(1)}#cookiescript_injected .mdc-switch.mdc-ripple-upgraded .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-ripple-upgraded .mdc-switch__ripple::after{top:0;left:0;-webkit-transform:scale(0);transform:scale(0);-webkit-transform-origin:center center;transform-origin:center center}#cookiescript_injected .mdc-switch.mdc-ripple-upgraded--unbounded .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-ripple-upgraded--unbounded .mdc-switch__ripple::after{top:0;left:0}#cookiescript_injected .mdc-switch.mdc-ripple-upgraded--foreground-activation .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-ripple-upgraded--foreground-activation .mdc-switch__ripple::after{-webkit-animation:mdc-ripple-fg-radius-in 225ms forwards,mdc-ripple-fg-opacity-in 75ms forwards;animation:mdc-ripple-fg-radius-in 225ms forwards,mdc-ripple-fg-opacity-in 75ms forwards}#cookiescript_injected .mdc-switch.mdc-ripple-upgraded--foreground-deactivation .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-ripple-upgraded--foreground-deactivation .mdc-switch__ripple::after{-webkit-animation:mdc-ripple-fg-opacity-out 150ms;animation:mdc-ripple-fg-opacity-out 150ms;-webkit-transform:translate(0) scale(1);transform:translate(0) scale(1)}#cookiescript_injected .mdc-switch .mdc-switch__ripple::after,#cookiescript_injected .mdc-switch .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch .mdc-switch__ripple::before{top:calc(50% - 50%);left:calc(50% - 50%);width:100%;height:100%}#cookiescript_injected .mdc-switch.mdc-ripple-upgraded .mdc-switch__ripple::after,#cookiescript_injected .mdc-switch.mdc-ripple-upgraded .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-ripple-upgraded .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-ripple-upgraded .mdc-switch__ripple::before{top:0;left:0;width:0;height:0}#cookiescript_injected .mdc-switch.mdc-ripple-upgraded .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-ripple-upgraded .mdc-switch__ripple::after{width:0;height:0}#cookiescript_injected .mdc-switch,#cookiescript_injected_fsd .mdc-switch{width:36px}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled .mdc-switch__handle::after{background:}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:hover:not(:focus):not(:active) .mdc-switch__handle::after{background:}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:focus:not(:active) .mdc-switch__handle::after{background:}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:active .mdc-switch__handle::after{background:}#cookiescript_injected .mdc-switch.mdc-switch--selected:disabled .mdc-switch__handle::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:disabled .mdc-switch__handle::after{background:#424242}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled .mdc-switch__handle::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled .mdc-switch__handle::after{background:#616161}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:hover:not(:focus):not(:active) .mdc-switch__handle::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:hover:not(:focus):not(:active) .mdc-switch__handle::after{background:#212121}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:focus:not(:active) .mdc-switch__handle::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:focus:not(:active) .mdc-switch__handle::after{background:#212121}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:active .mdc-switch__handle::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:active .mdc-switch__handle::after{background:#212121}#cookiescript_injected .mdc-switch.mdc-switch--unselected:disabled .mdc-switch__handle::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:disabled .mdc-switch__handle::after{background:#424242}#cookiescript_injected .mdc-switch .mdc-switch__handle::before,#cookiescript_injected_fsd .mdc-switch .mdc-switch__handle::before{background:#fff}#cookiescript_injected .mdc-switch:enabled .mdc-switch__shadow,#cookiescript_injected_fsd .mdc-switch:enabled .mdc-switch__shadow{box-shadow:0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12);--mdc-elevation-box-shadow-for-gss:0px 2px 1px -1px rgba(0, 0, 0, 0.2),0px 1px 1px 0px rgba(0, 0, 0, 0.14),0px 1px 3px 0px rgba(0, 0, 0, 0.12)}#cookiescript_injected .mdc-switch:disabled .mdc-switch__shadow,#cookiescript_injected_fsd .mdc-switch:disabled .mdc-switch__shadow{box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0 0 0 rgba(0,0,0,.14),0 0 0 0 rgba(0,0,0,.12);--mdc-elevation-box-shadow-for-gss:0px 0px 0px 0px rgba(0, 0, 0, 0.2),0px 0px 0px 0px rgba(0, 0, 0, 0.14),0px 0px 0px 0px rgba(0, 0, 0, 0.12)}#cookiescript_injected .mdc-switch .mdc-switch__handle,#cookiescript_injected_fsd .mdc-switch .mdc-switch__handle{height:20px}#cookiescript_injected .mdc-switch:disabled .mdc-switch__handle::after,#cookiescript_injected_fsd .mdc-switch:disabled .mdc-switch__handle::after{opacity:.38}#cookiescript_injected .mdc-switch .mdc-switch__handle,#cookiescript_injected_fsd .mdc-switch .mdc-switch__handle{border-radius:10px}#cookiescript_injected .mdc-switch .mdc-switch__handle,#cookiescript_injected_fsd .mdc-switch .mdc-switch__handle{width:20px}#cookiescript_injected .mdc-switch .mdc-switch__handle-track,#cookiescript_injected_fsd .mdc-switch .mdc-switch__handle-track{width:calc(100% - 20px)}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled .mdc-switch__icon,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled .mdc-switch__icon{fill:#fff}#cookiescript_injected .mdc-switch.mdc-switch--selected:disabled .mdc-switch__icon,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:disabled .mdc-switch__icon{fill:#fff}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled .mdc-switch__icon,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled .mdc-switch__icon{fill:#fff}#cookiescript_injected .mdc-switch.mdc-switch--unselected:disabled .mdc-switch__icon,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:disabled .mdc-switch__icon{fill:#fff}#cookiescript_injected .mdc-switch.mdc-switch--selected:disabled .mdc-switch__icons,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:disabled .mdc-switch__icons{opacity:.38}#cookiescript_injected .mdc-switch.mdc-switch--unselected:disabled .mdc-switch__icons,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:disabled .mdc-switch__icons{opacity:.38}#cookiescript_injected .mdc-switch.mdc-switch--selected .mdc-switch__icon,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected .mdc-switch__icon{width:18px;height:18px}#cookiescript_injected .mdc-switch.mdc-switch--unselected .mdc-switch__icon,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected .mdc-switch__icon{width:18px;height:18px}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:hover:not(:focus) .mdc-switch__ripple::after,#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:hover:not(:focus) .mdc-switch__ripple::before{background-color:}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:focus .mdc-switch__ripple::after,#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:focus .mdc-switch__ripple::before{background-color:}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:active .mdc-switch__ripple::after,#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:active .mdc-switch__ripple::before{background-color:}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:hover:not(:focus) .mdc-switch__ripple::after,#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:hover:not(:focus) .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:hover:not(:focus) .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:hover:not(:focus) .mdc-switch__ripple::before{background-color:#424242}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:focus .mdc-switch__ripple::after,#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:focus .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:focus .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:focus .mdc-switch__ripple::before{background-color:#424242}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:active .mdc-switch__ripple::after,#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:active .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:active .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:active .mdc-switch__ripple::before{background-color:#424242}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:hover:not(:focus).mdc-ripple-surface--hover .mdc-switch__ripple::before,#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:hover:not(:focus):hover .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:hover:not(:focus).mdc-ripple-surface--hover .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:hover:not(:focus):hover .mdc-switch__ripple::before{opacity:.04}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:focus.mdc-ripple-upgraded--background-focused .mdc-switch__ripple::before,#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:focus:not(.mdc-ripple-upgraded):focus .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:focus.mdc-ripple-upgraded--background-focused .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:focus:not(.mdc-ripple-upgraded):focus .mdc-switch__ripple::before{transition-duration:75ms;opacity:.12}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:active:not(.mdc-ripple-upgraded) .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:active:not(.mdc-ripple-upgraded) .mdc-switch__ripple::after{transition:opacity 150ms linear}#cookiescript_injected .mdc-switch.mdc-switch--selected:enabled:active:not(.mdc-ripple-upgraded):active .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:enabled:active:not(.mdc-ripple-upgraded):active .mdc-switch__ripple::after{transition-duration:75ms;opacity:.1}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:hover:not(:focus).mdc-ripple-surface--hover .mdc-switch__ripple::before,#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:hover:not(:focus):hover .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:hover:not(:focus).mdc-ripple-surface--hover .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:hover:not(:focus):hover .mdc-switch__ripple::before{opacity:.04}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:focus.mdc-ripple-upgraded--background-focused .mdc-switch__ripple::before,#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:focus:not(.mdc-ripple-upgraded):focus .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:focus.mdc-ripple-upgraded--background-focused .mdc-switch__ripple::before,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:focus:not(.mdc-ripple-upgraded):focus .mdc-switch__ripple::before{transition-duration:75ms;opacity:.12}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:active:not(.mdc-ripple-upgraded) .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:active:not(.mdc-ripple-upgraded) .mdc-switch__ripple::after{transition:opacity 150ms linear}#cookiescript_injected .mdc-switch.mdc-switch--unselected:enabled:active:not(.mdc-ripple-upgraded):active .mdc-switch__ripple::after,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:enabled:active:not(.mdc-ripple-upgraded):active .mdc-switch__ripple::after{transition-duration:75ms;opacity:.1}#cookiescript_injected .mdc-switch .mdc-switch__ripple,#cookiescript_injected_fsd .mdc-switch .mdc-switch__ripple{height:48px;width:48px}#cookiescript_injected .mdc-switch .mdc-switch__track,#cookiescript_injected_fsd .mdc-switch .mdc-switch__track{height:14px}#cookiescript_injected .mdc-switch:disabled .mdc-switch__track,#cookiescript_injected_fsd .mdc-switch:disabled .mdc-switch__track{opacity:.12}#cookiescript_injected .mdc-switch:enabled .mdc-switch__track::after{background:;opacity:0.3}#cookiescript_injected .mdc-switch:enabled:hover:not(:focus):not(:active) .mdc-switch__track::after{background:;opacity:0.3}#cookiescript_injected .mdc-switch:enabled:focus:not(:active) .mdc-switch__track::after{background:;opacity:0.3}#cookiescript_injected .mdc-switch:enabled:active .mdc-switch__track::after{background:;opacity:0.3}#cookiescript_injected .mdc-switch:disabled .mdc-switch__track::after,#cookiescript_injected_fsd .mdc-switch:disabled .mdc-switch__track::after{background:#424242}#cookiescript_injected .mdc-switch:enabled .mdc-switch__track::before,#cookiescript_injected_fsd .mdc-switch:enabled .mdc-switch__track::before{background:#e0e0e0}#cookiescript_injected .mdc-switch:enabled:hover:not(:focus):not(:active) .mdc-switch__track::before,#cookiescript_injected_fsd .mdc-switch:enabled:hover:not(:focus):not(:active) .mdc-switch__track::before{background:#e0e0e0}#cookiescript_injected .mdc-switch:enabled:focus:not(:active) .mdc-switch__track::before,#cookiescript_injected_fsd .mdc-switch:enabled:focus:not(:active) .mdc-switch__track::before{background:#e0e0e0}#cookiescript_injected .mdc-switch:enabled:active .mdc-switch__track::before,#cookiescript_injected_fsd .mdc-switch:enabled:active .mdc-switch__track::before{background:#e0e0e0}#cookiescript_injected .mdc-switch:disabled .mdc-switch__track::before,#cookiescript_injected_fsd .mdc-switch:disabled .mdc-switch__track::before{background:#424242}#cookiescript_injected .mdc-switch .mdc-switch__track,#cookiescript_injected_fsd .mdc-switch .mdc-switch__track{border-radius:7px}@media screen and (forced-colors:active),(-ms-high-contrast:active){#cookiescript_injected .mdc-switch:disabled .mdc-switch__handle::after,#cookiescript_injected_fsd .mdc-switch:disabled .mdc-switch__handle::after{opacity:1}#cookiescript_injected .mdc-switch.mdc-switch--selected:disabled .mdc-switch__icons,#cookiescript_injected_fsd .mdc-switch.mdc-switch--selected:disabled .mdc-switch__icons{opacity:1}#cookiescript_injected .mdc-switch.mdc-switch--unselected:disabled .mdc-switch__icons,#cookiescript_injected_fsd .mdc-switch.mdc-switch--unselected:disabled .mdc-switch__icons{opacity:1}#cookiescript_injected .mdc-switch:disabled .mdc-switch__track,#cookiescript_injected_fsd .mdc-switch:disabled .mdc-switch__track{opacity:1}}
+/*End Toggle*/
+
+#cookiescript_injected {
+bottom: 20px;
+left: 20px;
+    position: fixed;
+    padding: 15px 20px 15px 20px;
+    width: 300px;
+    text-align: left;
+    max-height: 85%;
+    overflow-y: auto;
+    max-width: calc(100% - 40px);
+}
+#cookiescript_copyright {
+    line-height: 1;
+    text-align: center;
+}
+#cookiescript_buttons {
+    justify-content: space-between;
+    margin: 0 -5px 0 -5px;
+    flex-wrap: wrap;
+}
+#cookiescript_manage_wrap {
+    margin: 0 0 11px 0;
+}
+#cookiescript_header {
+    padding: 14px 0 12px;
+    text-align: left;
+    margin: 0;
+}
+#cookiescript_checkboxs {
+    margin: -6px 0 18px -11px;
+}
+.cookiescript_checkbox {
+    margin: 0 0 -10px 0;
+}
+#cookiescript_accept,
+#cookiescript_save,
+#cookiescript_reject {
+    flex-grow: 1;
+    padding: 0 7px;
+    margin: 0 5px 10px 5px;
+}
+#cookiescript_description {
+    margin: 0 0 12px;
+}
+
+.cookiescript_checkbox_label{
+    padding: 0;
+    margin: 0 10px 0 -2px;
+}
+
+#cookiescript_injected{
+    transition: width 200ms 600ms;
+}
+
+#cookiescript_injected.hascookiereport{
+    width:600px;
+    transition: width 200ms 0ms;
+}
+#cookiescript_cookietablewrap {
+    transition: height 300ms 200ms, min-height 300ms 200ms, max-height 300ms 200ms, opacity 200ms 300ms;
+}
+#cookiescript_cookietablewrap.cookiescript_hidden {
+    transition: height 300ms 200ms, min-height 300ms 200ms, max-height 300ms 200ms, opacity 200ms 0ms;
+}
+
+#cookiescript_accept, #cookiescript_reject, #cookiescript_save {
+	border-radius: 20px;
+}
+
+#cookiescript_injected {
+	border-radius: 10px;
+}
+
+@media only screen and (max-width: 414px) {
+    #cookiescript_injected{
+    bottom: 0;
+    left: 0;
+        width: 100%;
+        padding: 15px;
+        border-radius:0;
+		max-width: 100%;
+    }
+    #cookiescript_description,
+    #cookiescript_buttons,
+    #cookiescript_manage_wrap,
+    #cookiescript_checkboxs
+    {
+        margin-bottom: 8px;
+    }
+    #cookiescript_header{
+        padding-top:5px;
+    }
+    #cookiescript_checkboxs {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    #cookiescript_injected {
+		max-height: 100%;
+	}
+}
+
+
+    </style>
+  <div id="cookiescript_injected" tabindex="0" role="alert" aria-live="assertive" data-nosnippet="" class="" style="opacity: 0.08;">
+    <div id="cookiescript_close" tabindex="0" role="button" aria-label="Close">×</div>
+  <div id="cookiescript_header" data-cs-i18n-text="{&quot;de&quot;:&quot;Diese Webseite verwendet Cookies.&quot;,&quot;fr&quot;:&quot;Ce site Web utilise des cookies&quot;,&quot;it&quot;:&quot;Questo sito web utilizza cookie&quot;,&quot;es&quot;:&quot;Ese sitio web utiliza cookies&quot;,&quot;el&quot;:&quot;\u0391\u03c5\u03c4\u03cc\u03c2 \u03bf \u03b9\u03c3\u03c4\u03cc\u03c4\u03bf\u03c0\u03bf\u03c2 \u03c7\u03c1\u03b7\u03c3\u03b9\u03bc\u03bf\u03c0\u03bf\u03b9\u03b5\u03af cookies&quot;,&quot;nl&quot;:&quot;Deze website maakt gebruik van cookies.&quot;,&quot;ru&quot;:&quot;\u042d\u0442\u043e\u0442 \u0432\u0435\u0431-\u0441\u0430\u0439\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442 \u0444\u0430\u0439\u043b\u044b cookie&quot;,&quot;en&quot;:&quot;This website uses cookies&quot;}">This website uses cookies</div>
+  <div id="cookiescript_description">
+	    <span data-cs-desc-box="true" data-cs-i18n-text="{&quot;de&quot;:&quot;Mit Nutzung dieser Website akzeptieren Sie unsere <a href=\/de\/datenschutz>Datenschutzrichtlinien<\/a> sowie unsere <a href=\/de\/nutzungsbedingungen>Nutzungsbedingungen<\/a>.&quot;,&quot;fr&quot;:&quot;En utilisant ce site, vous acceptez notre <a href=\/fr\/protection-des-donnees>politique de confidentialit\u00e9<\/a> ainsi que nos <a href=\/fr\/conditions-dutilisation>conditions d&amp;#39;utilisation<\/a>.&quot;,&quot;it&quot;:&quot;Utilizzando questo sito web, l&amp;#39;utente accetta la nostra <a href=\/it\/protezione-dei-dati>politica sulla privacy<\/a> e i nostri <a href=\/it\/condizioni-di-utilizzo>termini d&amp;#39;uso<\/a>.&quot;,&quot;es&quot;:&quot;Al utilizar este sitio web, usted acepta nuestra <a href=\/es\/proteccion-de-datos>pol\u00edtica de privacidad<\/a>, as\u00ed como nuestras <a href=\/es\/condiciones-de-uso>t\u00e9rminos de uso<\/a>.&quot;,&quot;el&quot;:&quot;\u039c\u03b5 \u03c4\u03b7 \u03c7\u03c1\u03ae\u03c3\u03b7 \u03b1\u03c5\u03c4\u03bf\u03cd \u03c4\u03bf\u03c5 \u03b9\u03c3\u03c4\u03cc\u03c4\u03bf\u03c0\u03bf\u03c5 \u03b1\u03c0\u03bf\u03b4\u03ad\u03c7\u03b5\u03c3\u03c4\u03b5 \u03c4\u03b7\u03bd <a href=\/el\/mystikotita>\u03c0\u03bf\u03bb\u03b9\u03c4\u03b9\u03ba\u03ae \u03b1\u03c0\u03bf\u03c1\u03c1\u03ae\u03c4\u03bf\u03c5<\/a> \u03ba\u03b1\u03b8\u03ce\u03c2 \u03ba\u03b1\u03b9 \u03c4\u03bf\u03c5\u03c2 <a href=\/el\/oroi-chrisis>\u03cc\u03c1\u03bf\u03c5\u03c2 \u03c7\u03c1\u03ae\u03c3\u03b7\u03c2<\/a>.&quot;,&quot;nl&quot;:&quot;Door gebruik te maken van deze website accepteert u ons <a href=\/nl\/gegevensbescherming>privacybeleid<\/a> evenals onze <a href=\/nl\/gebruiksvoorwaarden>terms-of-use<\/a>.&quot;,&quot;ru&quot;:&quot;\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u044f \u044d\u0442\u043e\u0442 \u0441\u0430\u0439\u0442, \u0432\u044b \u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0435\u0442\u0435 \u043d\u0430\u0448\u0443 <a href=\/ru\/usloviya-ekspluatatsii>\u043f\u043e\u043b\u0438\u0442\u0438\u043a\u0443 \u043a\u043e\u043d\u0444\u0438\u0434\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u0438<\/a>, \u0430 \u0442\u0430\u043a\u0436\u0435 \u043d\u0430\u0448\u0438 <a href=\/ru\/usloviya-ekspluatatsii>\u0442\u0435\u0440\u043c\u0438\u043d\u044b \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u044f<\/a>.&quot;,&quot;en&quot;:&quot;By using this website, you accept our <a href=\/en\/privacy-policy>privacy policy<\/a> as well as our <a href=\/en\/terms-of-use>terms-of-use<\/a>.&quot;}" data-cs-i18n-read="By using this website, you accept our <a href=/en/privacy-policy>privacy policy</a> as well as our <a href=/en/terms-of-use>terms-of-use</a>.">By using this website, you accept our <a href="/en/privacy-policy">privacy policy</a> as well as our <a href="/en/terms-of-use">terms-of-use</a>.</span>
+
+      </div>
+  <div id="cookiescript_checkboxs">
+          
+            <div class="cookiescript_checkbox">
+        <div class="mdc-checkbox" role="button">
+          <input tabindex="0" id="cookiescript_category_strict" data-cookiescript="checkbox-input" type="checkbox" class="mdc-checkbox__native-control cookiescript_checkbox_input" value="strict" disabled="" checked="">
+          <div class="mdc-checkbox__background">
+            <svg role="presentation" class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+              <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+            </svg>
+          </div>
+        </div>
+        <label class="cookiescript_checkbox_label" for="cookiescript_category_strict">
+          <span class="cookiescript_checkbox_text" data-cs-i18n-text="{&quot;de&quot;:&quot;Unbedingt erforderlich&quot;,&quot;fr&quot;:&quot;Strictement n\u00e9cessaires&quot;,&quot;it&quot;:&quot;Strettamente necessari&quot;,&quot;es&quot;:&quot;Cookies estrictamente necesarias&quot;,&quot;el&quot;:&quot;\u0391\u03c0\u03bf\u03bb\u03cd\u03c4\u03c9\u03c2 \u03b1\u03c0\u03b1\u03c1\u03b1\u03af\u03c4\u03b7\u03c4\u03b1&quot;,&quot;nl&quot;:&quot;Strikt noodzakelijk&quot;,&quot;ru&quot;:&quot;\u041e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0435&quot;,&quot;en&quot;:&quot;Strictly necessary&quot;}">Strictly necessary</span>
+        </label>
+      </div>
+
+                
+            <div class="cookiescript_checkbox">
+        <div class="mdc-checkbox" role="button">
+          <input tabindex="0" id="cookiescript_category_targeting" data-cookiescript="checkbox-input" type="checkbox" class="mdc-checkbox__native-control cookiescript_checkbox_input" value="targeting">
+          <div class="mdc-checkbox__background">
+            <svg role="presentation" class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+              <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+            </svg>
+          </div>
+        </div>
+        <label class="cookiescript_checkbox_label" for="cookiescript_category_targeting">
+          <span class="cookiescript_checkbox_text" data-cs-i18n-text="{&quot;de&quot;:&quot;Statistik&quot;,&quot;fr&quot;:&quot;Ciblage&quot;,&quot;it&quot;:&quot;Targeting&quot;,&quot;es&quot;:&quot;Cookies de preferencias&quot;,&quot;el&quot;:&quot;\u03a3\u03c4\u03cc\u03c7\u03b5\u03c5\u03c3\u03b7\u03c2&quot;,&quot;nl&quot;:&quot;Targeting&quot;,&quot;ru&quot;:&quot;\u0426\u0435\u043b\u0435\u0432\u044b\u0435&quot;,&quot;en&quot;:&quot;Targeting&quot;}">Targeting</span>
+        </label>
+      </div>
+
+          
+            <div class="cookiescript_checkbox">
+        <div class="mdc-checkbox" role="button">
+          <input tabindex="0" id="cookiescript_category_functionality" data-cookiescript="checkbox-input" type="checkbox" class="mdc-checkbox__native-control cookiescript_checkbox_input" value="functionality">
+          <div class="mdc-checkbox__background">
+            <svg role="presentation" class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+              <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path>
+            </svg>
+          </div>
+        </div>
+        <label class="cookiescript_checkbox_label" for="cookiescript_category_functionality">
+          <span class="cookiescript_checkbox_text" data-cs-i18n-text="{&quot;de&quot;:&quot;Funktionalit\u00e4t&quot;,&quot;fr&quot;:&quot;Fonctionnalit\u00e9&quot;,&quot;it&quot;:&quot;Funzionalit\u00e0&quot;,&quot;es&quot;:&quot;Cookies de funcionalidad&quot;,&quot;el&quot;:&quot;\u039b\u03b5\u03b9\u03c4\u03bf\u03c5\u03c1\u03b3\u03b9\u03ba\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2&quot;,&quot;nl&quot;:&quot;Functioneel&quot;,&quot;ru&quot;:&quot;\u0424\u0443\u043d\u043a\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u044b\u0435&quot;,&quot;en&quot;:&quot;Functionality&quot;}">Functionality</span>
+        </label>
+      </div>
+
+            </div>
+  <div id="cookiescript_buttons">
+          <div id="cookiescript_save" tabindex="0" role="button" data-cs-i18n-text="{&quot;de&quot;:&quot;Speichern &amp; Schlie\u00dfen&quot;,&quot;fr&quot;:&quot;Sauvegarder et fermer&quot;,&quot;it&quot;:&quot;Salva e chiudi&quot;,&quot;es&quot;:&quot;Guardar y cerrar&quot;,&quot;el&quot;:&quot;\u0391\u03c0\u03bf\u03b8\u03ae\u03ba\u03b5\u03c5\u03c3\u03b7 &amp; \u039a\u03bb\u03b5\u03af\u03c3\u03b9\u03bc\u03bf&quot;,&quot;nl&quot;:&quot;Opslaan en sluiten&quot;,&quot;ru&quot;:&quot;\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0438 \u0437\u0430\u043a\u0440\u044b\u0442\u044c&quot;,&quot;en&quot;:&quot;Save &amp; Close&quot;}">Save &amp; Close</div>
+              <div id="cookiescript_accept" tabindex="0" role="button" data-cs-i18n-text="{&quot;de&quot;:&quot;Alle akzeptieren&quot;,&quot;fr&quot;:&quot;Accepter tout&quot;,&quot;it&quot;:&quot;Accetta tutto&quot;,&quot;es&quot;:&quot;Aceptar todo&quot;,&quot;el&quot;:&quot;\u0391\u03c0\u03bf\u03b4\u03bf\u03c7\u03ae \u03cc\u03bb\u03c9\u03bd&quot;,&quot;nl&quot;:&quot;Alles accepteren&quot;,&quot;ru&quot;:&quot;\u041f\u0440\u0438\u043d\u044f\u0442\u044c \u0432\u0441\u0435&quot;,&quot;en&quot;:&quot;Accept all&quot;}">Accept all</div>
+              <div id="cookiescript_reject" tabindex="0" role="button" data-cs-i18n-text="{&quot;de&quot;:&quot;Alle ablehnen&quot;,&quot;fr&quot;:&quot;Refuser tout&quot;,&quot;it&quot;:&quot;Rifiuta tutto&quot;,&quot;es&quot;:&quot;Rechazar todo&quot;,&quot;el&quot;:&quot;\u0391\u03c0\u03cc\u03c1\u03c1\u03b9\u03c8\u03b7 \u03cc\u03bb\u03c9\u03bd&quot;,&quot;nl&quot;:&quot;Alles afwijzen&quot;,&quot;ru&quot;:&quot;\u041e\u0442\u043a\u043b\u043e\u043d\u0438\u0442\u044c \u0432\u0441\u0435&quot;,&quot;en&quot;:&quot;Decline all&quot;}">Decline all</div>
+      </div>
+
+  <div id="cookiescript_manage_wrap" tabindex="0" role="button">
+    <div id="cookiescript_manage">
+      <svg role="presentation" id="cookiescript_manageicon" viewBox="0 0 9.62 9.57">
+        <g id="Layer_2">
+          <g id="Layer_1-2">
+            <path class="cookiescript_gear" d="M9.46,6.06l-1.1-.78c0-.16.06-.31.06-.47a1.27,1.27,0,0,0-.06-.47L9.57,3.4l-1.15-2L7,1.93a2.74,2.74,0,0,0-.83-.47L6,0H3.61L3.35,1.46a7.14,7.14,0,0,0-.79.47L1.15,1.36,0,3.4l1.15.94c0,.16,0,.31,0,.47a1.51,1.51,0,0,0,0,.47l-1,.78A.75.75,0,0,0,0,6.17l1.15,2,1.41-.58a2.49,2.49,0,0,0,.84.47l.21,1.47H6a.53.53,0,0,1,0-.21L6.22,8.1a4,4,0,0,0,.84-.47l1.41.58,1.15-2A.75.75,0,0,0,9.46,6.06Zm-4.65.19A1.47,1.47,0,1,1,6.28,4.78,1.47,1.47,0,0,1,4.81,6.25Z"></path>
+          </g>
+        </g>
+      </svg>
+      <span data-cs-show-title="cookie-script" data-cs-i18n-text="{&quot;de&quot;:&quot;Details anzeigen&quot;,&quot;fr&quot;:&quot;Afficher les d\u00e9tails&quot;,&quot;it&quot;:&quot;Mostra dettagli&quot;,&quot;es&quot;:&quot;Mostrar detalles&quot;,&quot;el&quot;:&quot;\u0395\u03bc\u03c6\u03ac\u03bd\u03b9\u03c3\u03b7 \u03bb\u03b5\u03c0\u03c4\u03bf\u03bc\u03b5\u03c1\u03b5\u03b9\u03ce\u03bd&quot;,&quot;nl&quot;:&quot;Details weergeven&quot;,&quot;ru&quot;:&quot;\u041f\u043e\u0434\u0440\u043e\u0431\u043d\u0435\u0435&quot;,&quot;en&quot;:&quot;Show details&quot;}">Show details</span>
+      <span style="display: none" data-cs-hide-title="cookie-script" data-cs-i18n-text="{&quot;de&quot;:&quot;Details ausblenden&quot;,&quot;fr&quot;:&quot;Masquer les d\u00e9tails&quot;,&quot;it&quot;:&quot;Nascondi dettagli&quot;,&quot;es&quot;:&quot;Ocultar detalles&quot;,&quot;el&quot;:&quot;\u0391\u03c0\u03cc\u03ba\u03c1\u03c5\u03c8\u03b7 \u03bb\u03b5\u03c0\u03c4\u03bf\u03bc\u03b5\u03c1\u03b5\u03b9\u03ce\u03bd&quot;,&quot;nl&quot;:&quot;Details verbergen&quot;,&quot;ru&quot;:&quot;\u0421\u043a\u0440\u044b\u0442\u044c&quot;,&quot;en&quot;:&quot;Hide details&quot;}">Hide details</span>
+    </div>
+  </div>
+	<div class="cookiescript_hidden" id="cookiescript_cookietablewrap">
+			</div>
+	
+  <div id="cookiescript_copyright">
+    <a href="https://cookie-script.com" target="_blank" aria-label="Powered by CookieScript, opens a new window" id="cookiescript_link" title="Consent Management Platform">
+      Powered by CookieScript
+    </a>
+  </div>
+</div>
+</body></html>
+
+
+--------------------------------------------------------------------------------
+Provide feedback to chat_manager. Press enter to skip and use auto-reply, or type 'exit' to end the conversation: Admin (to chat_manager):
+
+[A
+
+--------------------------------------------------------------------------------
+Provide feedback to chat_manager. Press enter to skip and use auto-reply, or type 'exit' to end the conversation: 

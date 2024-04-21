@@ -1,0 +1,39 @@
+[
+  {
+    "model": "meta-llama/Llama-2-70b-chat-hf",
+    "base_url": "https://api.together.xyz/v1",
+    "api_key": "INSERT_API_KEY",
+    "tags": [
+      "llama2"
+    ]
+  },
+  {
+    "model": "codellama/CodeLlama-70b-Instruct-hf",
+    "base_url": "https://api.together.xyz/v1",
+    "api_key": "INSERT_API_KEY",
+    "tags": [
+      "codellama"
+    ]
+  },
+  {
+    "model": "gpt-3.5-turbo-0125",
+    "api_key": "INSERT_API_KEY",
+    "tags": [
+      "gpt3.5turbo"
+    ]
+  },
+  {
+    "model": "gpt-4-0125-preview",
+    "api_key": "INSERT_API_KEY",
+    "tags": [
+      "gpt4"
+    ]
+  },
+  {
+    "model": "gpt-4-turbo-2024-04-09",
+    "api_key": "INSERT_API_KEY",
+    "tags": [
+      "gpt4turbo"
+    ]
+  }
+]

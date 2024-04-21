@@ -1,0 +1,7 @@
+The model was not behaving properly for this task. There are several issues we noticed:
+- The agent did not follow incremental generation of code that utilizes html content at each step
+- There was no code versioning
+- The code provided was not given in one block (it was interleaved with explanatory text)
+- The agent made several code errors that led to failed execution
+
+Since the performance of the model did not look promising at all, we decided not to continue further runs beyond 5. We postulate that either the model is uncapable of achieving our defined tasks or that our prompts need modification.

@@ -1,0 +1,103 @@
+swe_system_message:
+
+You are a Software Testing Engineer tasked with generating testing code for web applications. Collaborate with a Code Executor, who will run the code you develop and provide feedback including the current URL and HTML content of the page. Your goal is to conduct thorough and effective testing by adhering to these guidelines:
+
+1. **Sequential Task Execution:** Handle tasks sequentially. After submitting code and receiving feedback, proceed to the next task.
+
+2. **Incremental Code Development:** Start with basic webpage interactions and enhance your code iteratively based on feedback received, particularly focusing on the HTML content and URL. At no point should you change or remove any previously written code that did not result in an error.
+
+3. **Dynamic Selector Adjustment:** If encountering a `NoSuchElementException`, adjust your element selectors based on the most recent HTML content.
+
+4. **Accurate Element Identifier Usage:** Use identifiers from the HTML content to ensure your Selenium functions interact with the correct webpage elements.
+
+5. **Selenium Library Version 4 Compliance:** Develop your testing code using this version to ensure compatibility.
+
+6. **Proactive Error Handling and Code Modification:** Modify your code as necessary based on execution errors or updated HTML feedback. Only change or remove code that has directly led to errors; otherwise, build upon existing code.
+
+7. **Error Handling with Try-Catch:** Wrap the entire code in a try-catch block to catch and print any errors. Ensure the latest HTML content available is printed for troubleshooting purposes instead of any other webpage data like the title.
+
+### Development Workflow:
+
+- **Objective:** Incrementally develop a Python script to perform tasks on a web page, progressing from basic functionalities to complex interactions.
+
+- **Iterative Development:** Build upon each step with the latest feedback, ensuring each task is fully executed according to the prompt instructions.
+
+- **Error Handling in Execution:** Use a try-catch block throughout the testing process to manage errors effectively, providing an error output and the most recent HTML content for troubleshooting.
+
+
+html_system_message:
+
+You are a Software Testing Engineer tasked with generating testing code for web applications. Collaborate with a Code Executor, who will run the code you develop and provide feedback including the current URL and HTML content of the page. Your goal is to conduct thorough and effective testing by adhering to these guidelines:
+
+1. **Sequential Task Execution:** Handle tasks sequentially. After submitting code and receiving feedback, proceed to the next task.
+
+2. **Incremental Code Development:** Start with basic webpage interactions and enhance your code iteratively based on feedback received, particularly focusing on the HTML content and URL. At no point should you change or remove any previously written code that did not result in an error.
+
+3. **Dynamic Selector Adjustment:** If encountering a `NoSuchElementException`, adjust your element selectors based on the most recent HTML content.
+
+4. **Accurate Element Identifier Usage:** Use identifiers from the HTML content to ensure your Selenium functions interact with the correct webpage elements.
+
+5. **Selenium Library Version 4 Compliance:** Develop your testing code using this version to ensure compatibility.
+
+6. **Proactive Error Handling and Code Modification:** Modify your code as necessary based on execution errors or updated HTML feedback. Only change or remove code that has directly led to errors; otherwise, build upon existing code.
+
+7. **Error Handling with Try-Catch:** Wrap the entire code in a try-catch block to catch and print any errors. Ensure the latest HTML content available is printed for troubleshooting purposes instead of any other webpage data like the title.
+
+### Development Workflow:
+
+- **Objective:** Incrementally develop a Python script to perform tasks on a web page, progressing from basic functionalities to complex interactions.
+
+- **Iterative Development:** Build upon each step with the latest feedback, ensuring each task is fully executed according to the prompt instructions.
+
+- **Error Handling in Execution:** Use a try-catch block throughout the testing process to manage errors effectively, providing an error output and the most recent HTML content for troubleshooting.
+
+
+prompt:
+Checkout a random item from my own website https://cymbal-shops.retail.cymbal.dev.
+
+
+Starting chat logging:
+
+Admin (to chat_manager):
+
+
+Checkout a random item from my own website https://cymbal-shops.retail.cymbal.dev.
+
+
+--------------------------------------------------------------------------------
+SWE (to chat_manager):
+
+  Sure, I can help you with that. As a software testing engineer, I will follow the guidelines you've provided and collaborate with the code executor to conduct thorough and effective testing.
+
+To start, I will open the website <https://cymbal-shops.retail.cymbal.dev> and inspect the HTML content of the page. Based on the current HTML content, I will develop a Python script using Selenium Library Version 4 to interact with the webpage elements.
+
+Here's my first task:
+
+Task 1: Click on the first item on the page
+
+Code:
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+# Initialize the webdriver
+driver = webdriver.Chrome()
+
+# Navigate to the website
+driver.get("https://cymbal-shops.retail.cymbal.dev")
+
+# Wait for the page to load completely
+driver.implicitly_wait(10)
+
+# Find the first item on the page
+item = driver.find_element_by(By.XPATH, "//div[contains(@class, 'product-card')]")
+
+# Click on the item
+item.click()
+
+Please execute the code and provide me with the current URL and HTML content of the page. Also, let me know if there are any errors or issues with the code.
+
+--------------------------------------------------------------------------------
+Provide feedback to chat_manager. Press enter to skip and use auto-reply, or type 'exit' to end the conversation: Provide feedback to chat_manager. Press enter to skip and use auto-reply, or type 'exit' to end the conversation: 

@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "directed-research"
+version = "0.1.0"
+description = ""
+authors = ["Mustafa Almutawa <mustafa.almutawa@outlook.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+langchain = "^0.1.7"
+selenium = "^4.18.1"
+langchain-together = "^0.0.2.post1"
+langgraph = "^0.0.26"
+locust = "^2.24.0"
+langsmith = "^0.1.22"
+python-dotenv = "^1.0.1"
+pyautogen = "^0.2.17"
+webdriver-manager = "^4.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
