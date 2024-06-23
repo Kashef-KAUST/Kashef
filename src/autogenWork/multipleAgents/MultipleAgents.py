@@ -69,6 +69,8 @@ gpt_4 = autogen.config_list_from_json(
     "../OAI_CONFIG_LIST", filter_dict=gpt_4_tag
 )
 
+# LLM options to select from
+#---------------------------------------------------------------
 gpt_3_config = {
     "config_list": gpt_3,
     "temperature": 0,
@@ -94,9 +96,9 @@ gpt_4_config = {
     "cache_seed": None,
 }
 
-# Select LLM
+# Select LLM (CAN BE MODIFIED BY USER)
 #---------------------------------------------------------------
-selected_LLM = code_llama_config
+selected_LLM = code_llama_config # replace this with the LLM you want from above options
 model_tag = selected_LLM.get('config_list')[0].get('model')
 
 # Select the appropriate swe system message
