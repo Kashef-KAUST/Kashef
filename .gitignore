@@ -11,4 +11,4 @@ chromedriver_linux64
 coding
 __pycache__
 
-logs/
+src/autogenWork/multipleAgents/logs/
