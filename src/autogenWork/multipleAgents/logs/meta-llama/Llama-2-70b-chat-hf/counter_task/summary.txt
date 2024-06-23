@@ -1,5 +1,0 @@
-This task exceeded the context length during the first html code. It was evident this model will not be able achieve this task due to limited context length. Therefore, we decided not continue with further runs.
-
-Reported error:
-raise self._make_status_error_from_response(err.response) from None
-openai.BadRequestError: Error code: 400 - {'error': {'message': 'Input validation error: `inputs` tokens + `max_new_tokens` must be <= 4097. Given: 4139 `inputs` tokens and 1 `max_new_tokens`', 'type': 'invalid_request_error', 'param': 'max_tokens', 'code': None}}

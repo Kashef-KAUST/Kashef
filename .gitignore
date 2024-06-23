@@ -1,0 +1,14 @@
+.DS_Store
+
+# Environments
+.venv
+venv/
+.env
+env/
+
+.cache
+chromedriver_linux64
+coding
+__pycache__
+
+logs/
