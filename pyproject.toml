@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "directed-research"
+name = "kashef"
 version = "0.1.0"
 description = ""
 authors = ["Mustafa Almutawa <mustafa.almutawa@outlook.com>"]
