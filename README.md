@@ -56,3 +56,6 @@ cd src/autogenWork/multipleAgents
 
 # There is more coming soon
 The setup is a little clunky, we know. The tool is currently under progress in various aspects, and we're working on making it more effective and eventually more user-friendly. We might even have a UI at one point! Stay tuned for updates :)
+
+# Publication
+Our paper on Kashef is published in IEEE AI-DCS'24. You can read it [here](https://mcanini.github.io/papers/kashef.ai-dcs24.pdf).
